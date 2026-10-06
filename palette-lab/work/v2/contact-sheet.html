@@ -1,0 +1,783 @@
+<!doctype html><meta charset="utf-8"><title>Mr. Themes families</title>
+<style>
+body{margin:0;padding:16px 20px;background:#202020;color:#eee;font:13px/1.35 -apple-system,system-ui,sans-serif}
+h2{font-size:15px;margin:14px 0 8px;display:flex;align-items:center;gap:10px}
+h2 small{font-weight:400;color:#aaa;font-size:12px}
+.sw{display:inline-flex;gap:2px}.sw i{width:14px;height:14px;border-radius:3px;display:inline-block}.sw i:first-child{width:28px}
+.cards{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.card{display:flex;border:1px solid;border-radius:8px;overflow:hidden;min-height:188px}
+.side{width:34px;border-right:1px solid;padding:6px 4px;display:flex;flex-direction:column;gap:5px}
+.tile{height:24px;border-radius:5px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.row{height:6px;border-radius:3px}
+.main{flex:1;padding:7px 9px;min-width:0}
+.name{font-size:10px;text-transform:uppercase;letter-spacing:.06em}
+.h{font-weight:650;font-size:14px;margin:2px 0}
+.p{font-size:11.5px;margin-bottom:6px}
+.pills{display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.pill{color:#fff;font-size:10px;font-weight:600;padding:1px 6px;border-radius:9px}
+.btn{margin-left:auto;font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:5px}
+pre{margin:0;font:10.5px/1.45 ui-monospace,Menlo,monospace;padding:5px 6px;border:1px solid;border-radius:5px;white-space:pre;overflow:hidden}
+</style><section><h2>Reef <span class="sw"><i style="background:#00d9d2"></i><i style="background:#ff1bbc"></i><i style="background:#dfbb00"></i><i style="background:#00d9d1"></i><i style="background:#ff6101"></i></span><small>Tropical shallows: turquoise water, coral and orchid, over sea-glass gray and beach sand.</small></h2>
+  <div class="cards"><div class="card" style="background:#1b2527;color:#c9d3d6;border-color:#353f42">
+  <div class="side" style="background:#141e20;border-color:#353f42">
+    <div class="tile" style="background:#7ecfca;color:#0e181a">D</div>
+    <div class="tile" style="background:#293436"></div>
+    <div class="row sel" style="background:rgba(126, 207, 202, 0.14)"></div>
+    <div class="row" style="background:#293436"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#919b9e">dark subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#de89a7;text-decoration:underline">link</span> and <span style="color:#a3adaf">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#5ca17d">done</span><span class="pill" style="background:#af8c56">warn</span><span class="pill" style="background:#d96e60">error</span><span class="pill" style="background:#6993d5">info</span>
+      <span class="btn" style="background:#7ecfca;color:#0e181a">Save</span></div>
+    <pre style="background:#141e20;border-color:#353f42;color:#c9d3d6"><span style="color:#6f7d81">// derive from core keys</span>
+<span style="color:#7ed1b5">export function</span> <span style="color:#de957b">resolve</span>(<span style="color:#de89a7">theme</span>: <span style="color:#73badf">ThemeFile</span>) {
+  <span style="color:#7ed1b5">const</span> <span style="color:#de89a7">v</span> <span style="color:#a3adaf">=</span> <span style="color:#de957b">derive</span>(<span style="color:#d2b772">"core"</span><span style="color:#9faeb2">,</span> <span style="color:#df87d0">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#162022;color:#d6e0e3;border-color:#323d3f">
+  <div class="side" style="background:#10191b;border-color:#323d3f">
+    <div class="tile" style="background:#67d2cc;color:#0e181a">D</div>
+    <div class="tile" style="background:#263032"></div>
+    <div class="row sel" style="background:rgba(103, 210, 204, 0.18)"></div>
+    <div class="row" style="background:#263032"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#909a9d">dark pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#e873a0;text-decoration:underline">link</span> and <span style="color:#afb9bc">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#4da479">done</span><span class="pill" style="background:#b48a47">warn</span><span class="pill" style="background:#e56455">error</span><span class="pill" style="background:#5f92e1">info</span>
+      <span class="btn" style="background:#67d2cc;color:#0e181a">Save</span></div>
+    <pre style="background:#10191b;border-color:#323d3f;color:#d6e0e3"><span style="color:#758387">// derive from core keys</span>
+<span style="color:#67d4ae">export function</span> <span style="color:#e88462">resolve</span>(<span style="color:#e873a0">theme</span>: <span style="color:#60b1e7">ThemeFile</span>) {
+  <span style="color:#67d4ae">const</span> <span style="color:#e873a0">v</span> <span style="color:#afb9bc">=</span> <span style="color:#e88462">derive</span>(<span style="color:#d7b55b">"core"</span><span style="color:#abbbbf">,</span> <span style="color:#e96fd7">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#0e1517;color:#e1eaec;border-color:#2d3436">
+  <div class="side" style="background:#060c0e;border-color:#2d3436">
+    <div class="tile" style="background:#00d9d2;color:#060c0e">D</div>
+    <div class="tile" style="background:#1e2527"></div>
+    <div class="row sel" style="background:rgba(0, 217, 210, 0.24)"></div>
+    <div class="row" style="background:#1e2527"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#8c9496">dark juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#ff1bbc;text-decoration:underline">link</span> and <span style="color:#b7bfc2">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#00aa61">done</span><span class="pill" style="background:#c18500">warn</span><span class="pill" style="background:#ff3d54">error</span><span class="pill" style="background:#528dff">info</span>
+      <span class="btn" style="background:#00d9d2;color:#060c0e">Save</span></div>
+    <pre style="background:#060c0e;border-color:#2d3436;color:#e1eaec"><span style="color:#717d80">// derive from core keys</span>
+<span style="color:#00d9d1">export function</span> <span style="color:#ff6101">resolve</span>(<span style="color:#fc00b8">theme</span>: <span style="color:#2770ff">ThemeFile</span>) {
+  <span style="color:#00d9d1">const</span> <span style="color:#fc00b8">v</span> <span style="color:#b7bfc2">=</span> <span style="color:#ff6101">derive</span>(<span style="color:#dfbb00">"core"</span><span style="color:#b3c0c4">,</span> <span style="color:#df36ff">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#f9eee0;color:#4c4235;border-color:#d0c6b8">
+  <div class="side" style="background:#efe5d7;border-color:#d0c6b8">
+    <div class="tile" style="background:#3a6764;color:#fefbf8">D</div>
+    <div class="tile" style="background:#e4d9cb"></div>
+    <div class="row sel" style="background:rgba(58, 103, 100, 0.12)"></div>
+    <div class="row" style="background:#e4d9cb"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#685e50">light subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#9a4265;text-decoration:underline">link</span> and <span style="color:#605649">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#43775c">done</span><span class="pill" style="background:#83683f">warn</span><span class="pill" style="background:#b24d41">error</span><span class="pill" style="background:#3e6cb4">info</span>
+      <span class="btn" style="background:#3a6764;color:#fefbf8">Save</span></div>
+    <pre style="background:#efe5d7;border-color:#d0c6b8;color:#4c4235"><span style="color:#84745e">// derive from core keys</span>
+<span style="color:#3f7253">export function</span> <span style="color:#9a553c">resolve</span>(<span style="color:#a5476d">theme</span>: <span style="color:#3b67aa">ThemeFile</span>) {
+  <span style="color:#3f7253">const</span> <span style="color:#a5476d">v</span> <span style="color:#605649">=</span> <span style="color:#9a553c">derive</span>(<span style="color:#5d6d3b">"core"</span><span style="color:#655541">,</span> <span style="color:#914285">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#fcf1e1;color:#372c1d;border-color:#d4c9ba">
+  <div class="side" style="background:#f2e6d7;border-color:#d4c9ba">
+    <div class="tile" style="background:#226c68;color:#fefbf8">D</div>
+    <div class="tile" style="background:#e6dbcb"></div>
+    <div class="row sel" style="background:rgba(34, 108, 104, 0.16)"></div>
+    <div class="row" style="background:#e6dbcb"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#6b5f4e">light pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#b12968;text-decoration:underline">link</span> and <span style="color:#5f5343">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#277c56">done</span><span class="pill" style="background:#8f6724">warn</span><span class="pill" style="background:#c93025">error</span><span class="pill" style="background:#236ad5">info</span>
+      <span class="btn" style="background:#226c68;color:#fefbf8">Save</span></div>
+    <pre style="background:#f2e6d7;border-color:#d4c9ba;color:#372c1d"><span style="color:#88755b">// derive from core keys</span>
+<span style="color:#25764a">export function</span> <span style="color:#ae4822">resolve</span>(<span style="color:#bd2c70">theme</span>: <span style="color:#2165c9">ThemeFile</span>) {
+  <span style="color:#25764a">const</span> <span style="color:#bd2c70">v</span> <span style="color:#5f5343">=</span> <span style="color:#ae4822">derive</span>(<span style="color:#5a7021">"core"</span><span style="color:#645239">,</span> <span style="color:#a62a97">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#ffffff;color:#1b150c;border-color:#dbd3c8">
+  <div class="side" style="background:#f9f0e5;border-color:#dbd3c8">
+    <div class="tile" style="background:#00726e;color:#fefbf8">D</div>
+    <div class="tile" style="background:#ece3d8"></div>
+    <div class="row sel" style="background:rgba(0, 114, 110, 0.2)"></div>
+    <div class="row" style="background:#ece3d8"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#6e655a">light juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#c1008c;text-decoration:underline">link</span> and <span style="color:#494137">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#00874c">done</span><span class="pill" style="background:#976700">warn</span><span class="pill" style="background:#d40036">error</span><span class="pill" style="background:#065eff">info</span>
+      <span class="btn" style="background:#00726e;color:#fefbf8">Save</span></div>
+    <pre style="background:#f9f0e5;border-color:#dbd3c8;color:#1b150c"><span style="color:#897c6b">// derive from core keys</span>
+<span style="color:#007b76">export function</span> <span style="color:#dd0039">resolve</span>(<span style="color:#d00098">theme</span>: <span style="color:#005bfc">ThemeFile</span>) {
+  <span style="color:#007b76">const</span> <span style="color:#d00098">v</span> <span style="color:#494137">=</span> <span style="color:#dd0039">derive</span>(<span style="color:#966400">"core"</span><span style="color:#4c4031">,</span> <span style="color:#ae00ca">42</span>);
+}</pre>
+  </div>
+</div></div></section><section><h2>Nautical <span class="sw"><i style="background:#00bdfd"></i><i style="background:#00d9d1"></i><i style="background:#00e444"></i><i style="background:#00b0fe"></i><i style="background:#dfbb00"></i></span><small>Night watch: sea blue and sea glass with brass fittings, over deep navy and chart paper.</small></h2>
+  <div class="cards"><div class="card" style="background:#1a2430;color:#ccd1d9;border-color:#333e4c">
+  <div class="side" style="background:#131c29;border-color:#333e4c">
+    <div class="tile" style="background:#73bcdd;color:#0d1723">D</div>
+    <div class="tile" style="background:#283240"></div>
+    <div class="row sel" style="background:rgba(115, 188, 221, 0.14)"></div>
+    <div class="row" style="background:#283240"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#9399a0">dark subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#7ed0bc;text-decoration:underline">link</span> and <span style="color:#a6abb2">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#5ca362">done</span><span class="pill" style="background:#af8c56">warn</span><span class="pill" style="background:#d96b77">error</span><span class="pill" style="background:#6993d5">info</span>
+      <span class="btn" style="background:#73bcdd;color:#0d1723">Save</span></div>
+    <pre style="background:#131c29;border-color:#333e4c;color:#ccd1d9"><span style="color:#737b85">// derive from core keys</span>
+<span style="color:#73bcdd">export function</span> <span style="color:#d2b772">resolve</span>(<span style="color:#de89a7">theme</span>: <span style="color:#7fa3d9">ThemeFile</span>) {
+  <span style="color:#73bcdd">const</span> <span style="color:#de89a7">v</span> <span style="color:#a6abb2">=</span> <span style="color:#d2b772">derive</span>(<span style="color:#7ed1b5">"core"</span><span style="color:#a3acb6">,</span> <span style="color:#df87d0">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#151f2b;color:#d9dfe6;border-color:#313b49">
+  <div class="side" style="background:#0e1824;border-color:#313b49">
+    <div class="tile" style="background:#5bb8e5;color:#0d1723">D</div>
+    <div class="tile" style="background:#242f3c"></div>
+    <div class="row sel" style="background:rgba(91, 184, 229, 0.18)"></div>
+    <div class="row" style="background:#242f3c"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#9399a0">dark pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#68d4bb;text-decoration:underline">link</span> and <span style="color:#b2b8bf">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#4ca657">done</span><span class="pill" style="background:#b48a47">warn</span><span class="pill" style="background:#e56071">error</span><span class="pill" style="background:#6591e1">info</span>
+      <span class="btn" style="background:#5bb8e5;color:#0d1723">Save</span></div>
+    <pre style="background:#0e1824;border-color:#313b49;color:#d9dfe6"><span style="color:#79818b">// derive from core keys</span>
+<span style="color:#5bb8e5">export function</span> <span style="color:#d7b55b">resolve</span>(<span style="color:#e873a0">theme</span>: <span style="color:#6999e3">ThemeFile</span>) {
+  <span style="color:#5bb8e5">const</span> <span style="color:#e873a0">v</span> <span style="color:#b2b8bf">=</span> <span style="color:#d7b55b">derive</span>(<span style="color:#67d4af">"core"</span><span style="color:#b0b8c3">,</span> <span style="color:#e96fd7">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#0d141d;color:#e3e8ef;border-color:#2c343e">
+  <div class="side" style="background:#060c14;border-color:#2c343e">
+    <div class="tile" style="background:#00bdfd;color:#060c14">D</div>
+    <div class="tile" style="background:#1d252e"></div>
+    <div class="row sel" style="background:rgba(0, 189, 253, 0.24)"></div>
+    <div class="row" style="background:#1d252e"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#8e9398">dark juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#00d9d1;text-decoration:underline">link</span> and <span style="color:#b9bec4">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#00ac11">done</span><span class="pill" style="background:#c18500">warn</span><span class="pill" style="background:#ff3d54">error</span><span class="pill" style="background:#528dff">info</span>
+      <span class="btn" style="background:#00bdfd;color:#060c14">Save</span></div>
+    <pre style="background:#060c14;border-color:#2c343e;color:#e3e8ef"><span style="color:#747b83">// derive from core keys</span>
+<span style="color:#00b0fe">export function</span> <span style="color:#dfbb00">resolve</span>(<span style="color:#fc00b8">theme</span>: <span style="color:#336fff">ThemeFile</span>) {
+  <span style="color:#00b0fe">const</span> <span style="color:#fc00b8">v</span> <span style="color:#b9bec4">=</span> <span style="color:#dfbb00">derive</span>(<span style="color:#00e444">"core"</span><span style="color:#b7bec7">,</span> <span style="color:#df36ff">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#e5f2fb;color:#37464f;border-color:#bdc9d1">
+  <div class="side" style="background:#dce8f0;border-color:#bdc9d1">
+    <div class="tile" style="background:#3a657b;color:#f9fcff">D</div>
+    <div class="tile" style="background:#d0dde5"></div>
+    <div class="row sel" style="background:rgba(58, 101, 123, 0.12)"></div>
+    <div class="row" style="background:#d0dde5"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#52626c">light subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#3b685f;text-decoration:underline">link</span> and <span style="color:#4b5b64">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#427847">done</span><span class="pill" style="background:#83683f">warn</span><span class="pill" style="background:#b14c58">error</span><span class="pill" style="background:#3b6ac5">info</span>
+      <span class="btn" style="background:#3a657b;color:#f9fcff">Save</span></div>
+    <pre style="background:#dce8f0;border-color:#bdc9d1;color:#37464f"><span style="color:#617a89">// derive from core keys</span>
+<span style="color:#3d6a9b">export function</span> <span style="color:#8c5c3c">resolve</span>(<span style="color:#a5476d">theme</span>: <span style="color:#555cc5">ThemeFile</span>) {
+  <span style="color:#3d6a9b">const</span> <span style="color:#a5476d">v</span> <span style="color:#4b5b64">=</span> <span style="color:#8c5c3c">derive</span>(<span style="color:#3e7243">"core"</span><span style="color:#445c6a">,</span> <span style="color:#914285">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#e7f5fe;color:#1f303b;border-color:#bfcdd5">
+  <div class="side" style="background:#dceaf3;border-color:#bfcdd5">
+    <div class="tile" style="background:#226888;color:#f9fcff">D</div>
+    <div class="tile" style="background:#d1dfe7"></div>
+    <div class="row sel" style="background:rgba(34, 104, 136, 0.16)"></div>
+    <div class="row" style="background:#d1dfe7"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#516470">light pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#226c60;text-decoration:underline">link</span> and <span style="color:#455864">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#277e35">done</span><span class="pill" style="background:#8f6724">warn</span><span class="pill" style="background:#c62e4d">error</span><span class="pill" style="background:#2165ea">info</span>
+      <span class="btn" style="background:#226888;color:#f9fcff">Save</span></div>
+    <pre style="background:#dceaf3;border-color:#bfcdd5;color:#1f303b"><span style="color:#5e7c8e">// derive from core keys</span>
+<span style="color:#236ab1">export function</span> <span style="color:#9c5622">resolve</span>(<span style="color:#bd2c70">theme</span>: <span style="color:#4b3ae8">ThemeFile</span>) {
+  <span style="color:#236ab1">const</span> <span style="color:#bd2c70">v</span> <span style="color:#455864">=</span> <span style="color:#9c5622">derive</span>(<span style="color:#247733">"core"</span><span style="color:#3c5a6b">,</span> <span style="color:#a62a97">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#ffffff;color:#0d181e;border-color:#ccd6dc">
+  <div class="side" style="background:#e9f4fa;border-color:#ccd6dc">
+    <div class="tile" style="background:#006e95;color:#f9fcff">D</div>
+    <div class="tile" style="background:#dce6ed"></div>
+    <div class="row sel" style="background:rgba(0, 110, 149, 0.2)"></div>
+    <div class="row" style="background:#dce6ed"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#5b6870">light juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#00736f;text-decoration:underline">link</span> and <span style="color:#38444c">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#00890b">done</span><span class="pill" style="background:#976700">warn</span><span class="pill" style="background:#d40036">error</span><span class="pill" style="background:#065eff">info</span>
+      <span class="btn" style="background:#006e95;color:#f9fcff">Save</span></div>
+    <pre style="background:#e9f4fa;border-color:#ccd6dc;color:#0d181e"><span style="color:#6d818e">// derive from core keys</span>
+<span style="color:#006dd4">export function</span> <span style="color:#966400">resolve</span>(<span style="color:#d00098">theme</span>: <span style="color:#5505ff">ThemeFile</span>) {
+  <span style="color:#006dd4">const</span> <span style="color:#d00098">v</span> <span style="color:#38444c">=</span> <span style="color:#966400">derive</span>(<span style="color:#007f47">"core"</span><span style="color:#334550">,</span> <span style="color:#cd0035">42</span>);
+}</pre>
+  </div>
+</div></div></section><section><h2>Desert <span class="sw"><i style="background:#fd7a00"></i><i style="background:#00b0fe"></i><i style="background:#a0d200"></i><i style="background:#ff6101"></i><i style="background:#dfbb00"></i></span><small>Sun on sandstone: ochre and sage over warm sand, with a desert-sky blue.</small></h2>
+  <div class="cards"><div class="card" style="background:#25221f;color:#d6d0c9;border-color:#403c39">
+  <div class="side" style="background:#1e1b18;border-color:#403c39">
+    <div class="tile" style="background:#dfa36c;color:#181512">D</div>
+    <div class="tile" style="background:#34312d"></div>
+    <div class="row sel" style="background:rgba(223, 163, 108, 0.14)"></div>
+    <div class="row" style="background:#34312d"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#9e9891">dark subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#73bcdd;text-decoration:underline">link</span> and <span style="color:#b0aaa3">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#839c57">done</span><span class="pill" style="background:#af8c56">warn</span><span class="pill" style="background:#d96e60">error</span><span class="pill" style="background:#5d9db1">info</span>
+      <span class="btn" style="background:#dfa36c;color:#181512">Save</span></div>
+    <pre style="background:#1e1b18;border-color:#403c39;color:#d6d0c9"><span style="color:#81796f">// derive from core keys</span>
+<span style="color:#dfa36c">export function</span> <span style="color:#d2b772">resolve</span>(<span style="color:#dd8c81">theme</span>: <span style="color:#73bcdd">ThemeFile</span>) {
+  <span style="color:#dfa36c">const</span> <span style="color:#dd8c81">v</span> <span style="color:#b0aaa3">=</span> <span style="color:#d2b772">derive</span>(<span style="color:#adcb75">"core"</span><span style="color:#b2a99f">,</span> <span style="color:#de89a7">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#211d1a;color:#e3ddd6;border-color:#3d3a36">
+  <div class="side" style="background:#1a1713;border-color:#3d3a36">
+    <div class="tile" style="background:#e49b55;color:#181512">D</div>
+    <div class="tile" style="background:#302d2a"></div>
+    <div class="row sel" style="background:rgba(228, 155, 85, 0.18)"></div>
+    <div class="row" style="background:#302d2a"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#9d9790">dark pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#5bb8e5;text-decoration:underline">link</span> and <span style="color:#bcb6af">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#819e47">done</span><span class="pill" style="background:#b48a47">warn</span><span class="pill" style="background:#e56455">error</span><span class="pill" style="background:#4d9eb6">info</span>
+      <span class="btn" style="background:#e49b55;color:#181512">Save</span></div>
+    <pre style="background:#1a1713;border-color:#3d3a36;color:#e3ddd6"><span style="color:#877f75">// derive from core keys</span>
+<span style="color:#e49b55">export function</span> <span style="color:#d7b55b">resolve</span>(<span style="color:#e7786a">theme</span>: <span style="color:#5bb8e5">ThemeFile</span>) {
+  <span style="color:#e49b55">const</span> <span style="color:#e7786a">v</span> <span style="color:#bcb6af">=</span> <span style="color:#d7b55b">derive</span>(<span style="color:#a9cd5f">"core"</span><span style="color:#bfb6ab">,</span> <span style="color:#e873a0">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#161311;color:#ece7e1;border-color:#353230">
+  <div class="side" style="background:#0d0b09;border-color:#353230">
+    <div class="tile" style="background:#fd7a00;color:#0d0b09">D</div>
+    <div class="tile" style="background:#262421"></div>
+    <div class="row sel" style="background:rgba(253, 122, 0, 0.24)"></div>
+    <div class="row" style="background:#262421"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#96918c">dark juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#00b0fe;text-decoration:underline">link</span> and <span style="color:#c2bdb7">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#7aa100">done</span><span class="pill" style="background:#c18500">warn</span><span class="pill" style="background:#ff3d54">error</span><span class="pill" style="background:#00a1c3">info</span>
+      <span class="btn" style="background:#fd7a00;color:#0d0b09">Save</span></div>
+    <pre style="background:#0d0b09;border-color:#353230;color:#ece7e1"><span style="color:#807971">// derive from core keys</span>
+<span style="color:#ff6101">export function</span> <span style="color:#dfbb00">resolve</span>(<span style="color:#fd009b">theme</span>: <span style="color:#00b0fe">ThemeFile</span>) {
+  <span style="color:#ff6101">const</span> <span style="color:#fd009b">v</span> <span style="color:#c2bdb7">=</span> <span style="color:#dfbb00">derive</span>(<span style="color:#a0d200">"core"</span><span style="color:#c4bcb4">,</span> <span style="color:#ff08fa">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#f7efe0;color:#4a4335;border-color:#cec7b8">
+  <div class="side" style="background:#ede5d6;border-color:#cec7b8">
+    <div class="tile" style="background:#855437;color:#fdfcf8">D</div>
+    <div class="tile" style="background:#e1dacb"></div>
+    <div class="row sel" style="background:rgba(133, 84, 55, 0.12)"></div>
+    <div class="row" style="background:#e1dacb"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#665f50">light subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#386290;text-decoration:underline">link</span> and <span style="color:#5e5748">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#60733e">done</span><span class="pill" style="background:#83683f">warn</span><span class="pill" style="background:#b24c50">error</span><span class="pill" style="background:#437382">info</span>
+      <span class="btn" style="background:#855437;color:#fdfcf8">Save</span></div>
+    <pre style="background:#ede5d6;border-color:#cec7b8;color:#4a4335"><span style="color:#81755e">// derive from core keys</span>
+<span style="color:#97563c">export function</span> <span style="color:#5d6d3b">resolve</span>(<span style="color:#a8474f">theme</span>: <span style="color:#3d699a">ThemeFile</span>) {
+  <span style="color:#97563c">const</span> <span style="color:#a8474f">v</span> <span style="color:#5e5748">=</span> <span style="color:#5d6d3b">derive</span>(<span style="color:#3f7248">"core"</span><span style="color:#625740">,</span> <span style="color:#99426a">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#faf2e1;color:#352d1c;border-color:#d2cab9">
+  <div class="side" style="background:#efe7d6;border-color:#d2cab9">
+    <div class="tile" style="background:#954e1f;color:#fdfcf8">D</div>
+    <div class="tile" style="background:#e4dccb"></div>
+    <div class="row sel" style="background:rgba(149, 78, 31, 0.16)"></div>
+    <div class="row" style="background:#e4dccb"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#69604e">light pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#2063a7;text-decoration:underline">link</span> and <span style="color:#5d5442">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#5d7724">done</span><span class="pill" style="background:#8f6724">warn</span><span class="pill" style="background:#c82f41">error</span><span class="pill" style="background:#28778d">info</span>
+      <span class="btn" style="background:#954e1f;color:#fdfcf8">Save</span></div>
+    <pre style="background:#efe7d6;border-color:#d2cab9;color:#352d1c"><span style="color:#84765a">// derive from core keys</span>
+<span style="color:#ab4b22">export function</span> <span style="color:#5a7021">resolve</span>(<span style="color:#c22d45">theme</span>: <span style="color:#236ab1">ThemeFile</span>) {
+  <span style="color:#ab4b22">const</span> <span style="color:#c22d45">v</span> <span style="color:#5d5442">=</span> <span style="color:#5a7021">derive</span>(<span style="color:#25773b">"core"</span><span style="color:#615438">,</span> <span style="color:#b02970">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#ffffff;color:#1a150b;border-color:#dad4c7">
+  <div class="side" style="background:#f7f1e5;border-color:#dad4c7">
+    <div class="tile" style="background:#a64d00;color:#fdfcf8">D</div>
+    <div class="tile" style="background:#eae4d7"></div>
+    <div class="row sel" style="background:rgba(166, 77, 0, 0.2)"></div>
+    <div class="row" style="background:#eae4d7"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#6b6559">light juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#0065c5;text-decoration:underline">link</span> and <span style="color:#474236">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#5f7e00">done</span><span class="pill" style="background:#976700">warn</span><span class="pill" style="background:#d40036">error</span><span class="pill" style="background:#065eff">info</span>
+      <span class="btn" style="background:#a64d00;color:#fdfcf8">Save</span></div>
+    <pre style="background:#f7f1e5;border-color:#dad4c7;color:#1a150b"><span style="color:#867d6a">// derive from core keys</span>
+<span style="color:#df0006">export function</span> <span style="color:#966400">resolve</span>(<span style="color:#d90066">theme</span>: <span style="color:#006dd4">ThemeFile</span>) {
+  <span style="color:#df0006">const</span> <span style="color:#d90066">v</span> <span style="color:#474236">=</span> <span style="color:#966400">derive</span>(<span style="color:#5a7800">"core"</span><span style="color:#4a4130">,</span> <span style="color:#bd009f">42</span>);
+}</pre>
+  </div>
+</div></div></section><section><h2>Meadow <span class="sw"><i style="background:#7bdb00"></i><i style="background:#00b0fe"></i><i style="background:#00e183"></i><i style="background:#a0d200"></i><i style="background:#dfbb00"></i></span><small>High summer: spring green and corn gold with poppy and sky, over moss gray and straw.</small></h2>
+  <div class="cards"><div class="card" style="background:#21241c;color:#cfd2ca;border-color:#3b3f36">
+  <div class="side" style="background:#1a1d15;border-color:#3b3f36">
+    <div class="tile" style="background:#b2c975;color:#14170f">D</div>
+    <div class="tile" style="background:#30332a"></div>
+    <div class="row sel" style="background:rgba(178, 201, 117, 0.14)"></div>
+    <div class="row" style="background:#30332a"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#979a92">dark subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#73bcdd;text-decoration:underline">link</span> and <span style="color:#a9aca4">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#5ca270">done</span><span class="pill" style="background:#af8c56">warn</span><span class="pill" style="background:#d96e60">error</span><span class="pill" style="background:#5d9db1">info</span>
+      <span class="btn" style="background:#b2c975;color:#14170f">Save</span></div>
+    <pre style="background:#1a1d15;border-color:#3b3f36;color:#cfd2ca"><span style="color:#787c71">// derive from core keys</span>
+<span style="color:#b2c975">export function</span> <span style="color:#cebe75">resolve</span>(<span style="color:#dd8c81">theme</span>: <span style="color:#73bcdd">ThemeFile</span>) {
+  <span style="color:#b2c975">const</span> <span style="color:#dd8c81">v</span> <span style="color:#a9aca4">=</span> <span style="color:#cebe75">derive</span>(<span style="color:#7ed1b5">"core"</span><span style="color:#a8ada1">,</span> <span style="color:#de89a7">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#1c1f17;color:#dcdfd7;border-color:#383c33">
+  <div class="side" style="background:#151911;border-color:#383c33">
+    <div class="tile" style="background:#afcc5f;color:#14170f">D</div>
+    <div class="tile" style="background:#2c2f27"></div>
+    <div class="row sel" style="background:rgba(175, 204, 95, 0.18)"></div>
+    <div class="row" style="background:#2c2f27"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#969a92">dark pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#5bb8e5;text-decoration:underline">link</span> and <span style="color:#b5b9b1">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#4da569">done</span><span class="pill" style="background:#b48a47">warn</span><span class="pill" style="background:#e56455">error</span><span class="pill" style="background:#4d9eb6">info</span>
+      <span class="btn" style="background:#afcc5f;color:#14170f">Save</span></div>
+    <pre style="background:#151911;border-color:#383c33;color:#dcdfd7"><span style="color:#7e8277">// derive from core keys</span>
+<span style="color:#afcc5f">export function</span> <span style="color:#d3be5e">resolve</span>(<span style="color:#e7786a">theme</span>: <span style="color:#5bb8e5">ThemeFile</span>) {
+  <span style="color:#afcc5f">const</span> <span style="color:#e7786a">v</span> <span style="color:#b5b9b1">=</span> <span style="color:#d3be5e">derive</span>(<span style="color:#67d4af">"core"</span><span style="color:#b5baad">,</span> <span style="color:#e873a0">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#12150f;color:#e6e9e2;border-color:#31342d">
+  <div class="side" style="background:#0a0c07;border-color:#31342d">
+    <div class="tile" style="background:#7bdb00;color:#0a0c07">D</div>
+    <div class="tile" style="background:#23251f"></div>
+    <div class="row sel" style="background:rgba(123, 219, 0, 0.24)"></div>
+    <div class="row" style="background:#23251f"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#91938d">dark juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#00b0fe;text-decoration:underline">link</span> and <span style="color:#bcbfb8">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#00a877">done</span><span class="pill" style="background:#c18500">warn</span><span class="pill" style="background:#ff3d54">error</span><span class="pill" style="background:#00a1c3">info</span>
+      <span class="btn" style="background:#7bdb00;color:#0a0c07">Save</span></div>
+    <pre style="background:#0a0c07;border-color:#31342d;color:#e6e9e2"><span style="color:#787c72">// derive from core keys</span>
+<span style="color:#a0d200">export function</span> <span style="color:#dfbb00">resolve</span>(<span style="color:#ff6101">theme</span>: <span style="color:#00b0fe">ThemeFile</span>) {
+  <span style="color:#a0d200">const</span> <span style="color:#ff6101">v</span> <span style="color:#bcbfb8">=</span> <span style="color:#dfbb00">derive</span>(<span style="color:#00e183">"core"</span><span style="color:#bbc0b5">,</span> <span style="color:#ff1bbc">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#f3f1e0;color:#474435;border-color:#cac8b8">
+  <div class="side" style="background:#e9e7d6;border-color:#cac8b8">
+    <div class="tile" style="background:#4a6836;color:#fcfcf8">D</div>
+    <div class="tile" style="background:#dedbcb"></div>
+    <div class="row sel" style="background:rgba(74, 104, 54, 0.12)"></div>
+    <div class="row" style="background:#dedbcb"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#636050">light subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#386290;text-decoration:underline">link</span> and <span style="color:#5b5949">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#437760">done</span><span class="pill" style="background:#83683f">warn</span><span class="pill" style="background:#b34d41">error</span><span class="pill" style="background:#437382">info</span>
+      <span class="btn" style="background:#4a6836;color:#fcfcf8">Save</span></div>
+    <pre style="background:#e9e7d6;border-color:#cac8b8;color:#474435"><span style="color:#7b775d">// derive from core keys</span>
+<span style="color:#4b713b">export function</span> <span style="color:#7d633c">resolve</span>(<span style="color:#aa493e">theme</span>: <span style="color:#3d6a9b">ThemeFile</span>) {
+  <span style="color:#4b713b">const</span> <span style="color:#aa493e">v</span> <span style="color:#5b5949">=</span> <span style="color:#7d633c">derive</span>(<span style="color:#3f7158">"core"</span><span style="color:#5d5940">,</span> <span style="color:#9a4265">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#f6f3e1;color:#312e1d;border-color:#cecbba">
+  <div class="side" style="background:#ebe9d7;border-color:#cecbba">
+    <div class="tile" style="background:#416c1e;color:#fcfcf8">D</div>
+    <div class="tile" style="background:#e0ddcb"></div>
+    <div class="row sel" style="background:rgba(65, 108, 30, 0.16)"></div>
+    <div class="row" style="background:#e0ddcb"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#65624e">light pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#2063a7;text-decoration:underline">link</span> and <span style="color:#595643">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#287c5c">done</span><span class="pill" style="background:#8f6724">warn</span><span class="pill" style="background:#c93025">error</span><span class="pill" style="background:#28778d">info</span>
+      <span class="btn" style="background:#416c1e;color:#fcfcf8">Save</span></div>
+    <pre style="background:#ebe9d7;border-color:#cecbba;color:#312e1d"><span style="color:#7d785a">// derive from core keys</span>
+<span style="color:#3d7521">export function</span> <span style="color:#876222">resolve</span>(<span style="color:#c42e25">theme</span>: <span style="color:#236ab1">ThemeFile</span>) {
+  <span style="color:#3d7521">const</span> <span style="color:#c42e25">v</span> <span style="color:#595643">=</span> <span style="color:#876222">derive</span>(<span style="color:#257654">"core"</span><span style="color:#5b5639">,</span> <span style="color:#b22969">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#ffffff;color:#18160c;border-color:#d7d5c7">
+  <div class="side" style="background:#f4f2e5;border-color:#d7d5c7">
+    <div class="tile" style="background:#3d7300;color:#fcfcf8">D</div>
+    <div class="tile" style="background:#e7e5d8"></div>
+    <div class="row sel" style="background:rgba(61, 115, 0, 0.2)"></div>
+    <div class="row" style="background:#e7e5d8"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#68675a">light juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#0065c5;text-decoration:underline">link</span> and <span style="color:#454337">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#00865f">done</span><span class="pill" style="background:#976700">warn</span><span class="pill" style="background:#d40036">error</span><span class="pill" style="background:#065eff">info</span>
+      <span class="btn" style="background:#3d7300;color:#fcfcf8">Save</span></div>
+    <pre style="background:#f4f2e5;border-color:#d7d5c7;color:#18160c"><span style="color:#817e6a">// derive from core keys</span>
+<span style="color:#5a7800">export function</span> <span style="color:#966400">resolve</span>(<span style="color:#dd0039">theme</span>: <span style="color:#006dd4">ThemeFile</span>) {
+  <span style="color:#5a7800">const</span> <span style="color:#dd0039">v</span> <span style="color:#454337">=</span> <span style="color:#966400">derive</span>(<span style="color:#007f47">"core"</span><span style="color:#464330">,</span> <span style="color:#c2008d">42</span>);
+}</pre>
+  </div>
+</div></div></section><section><h2>Canyon <span class="sw"><i style="background:#ff7807"></i><i style="background:#00d9d1"></i><i style="background:#a0d200"></i><i style="background:#ff6101"></i><i style="background:#dfbb00"></i></span><small>Red rock at dusk: terracotta, turquoise and gold, over warm umber and adobe.</small></h2>
+  <div class="cards"><div class="card" style="background:#28211e;color:#d8cfcb;border-color:#433b38">
+  <div class="side" style="background:#211a18;border-color:#433b38">
+    <div class="tile" style="background:#df9977;color:#1b1412">D</div>
+    <div class="tile" style="background:#37302d"></div>
+    <div class="row sel" style="background:rgba(223, 153, 119, 0.14)"></div>
+    <div class="row" style="background:#37302d"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#a09794">dark subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#7ccbd0;text-decoration:underline">link</span> and <span style="color:#b2a8a5">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#839c57">done</span><span class="pill" style="background:#af8c56">warn</span><span class="pill" style="background:#d96b77">error</span><span class="pill" style="background:#5d9dad">info</span>
+      <span class="btn" style="background:#df9977;color:#1b1412">Save</span></div>
+    <pre style="background:#211a18;border-color:#433b38;color:#d8cfcb"><span style="color:#847772">// derive from core keys</span>
+<span style="color:#df9977">export function</span> <span style="color:#d2b772">resolve</span>(<span style="color:#dd8a90">theme</span>: <span style="color:#7ccbd0">ThemeFile</span>) {
+  <span style="color:#df9977">const</span> <span style="color:#dd8a90">v</span> <span style="color:#b2a8a5">=</span> <span style="color:#d2b772">derive</span>(<span style="color:#adcb75">"core"</span><span style="color:#b6a7a2">,</span> <span style="color:#de89b1">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#231c1a;color:#e6dcd8;border-color:#403936">
+  <div class="side" style="background:#1c1513;border-color:#403936">
+    <div class="tile" style="background:#e98c5b;color:#1b1412">D</div>
+    <div class="tile" style="background:#332c29"></div>
+    <div class="row sel" style="background:rgba(233, 140, 91, 0.18)"></div>
+    <div class="row" style="background:#332c29"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#9f9693">dark pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#66ced5;text-decoration:underline">link</span> and <span style="color:#bfb5b2">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#819e47">done</span><span class="pill" style="background:#b48a47">warn</span><span class="pill" style="background:#e56071">error</span><span class="pill" style="background:#4e9fb2">info</span>
+      <span class="btn" style="background:#e98c5b;color:#1b1412">Save</span></div>
+    <pre style="background:#1c1513;border-color:#403936;color:#e6dcd8"><span style="color:#8a7d78">// derive from core keys</span>
+<span style="color:#e98c5b">export function</span> <span style="color:#d7b55b">resolve</span>(<span style="color:#e77580">theme</span>: <span style="color:#66ced5">ThemeFile</span>) {
+  <span style="color:#e98c5b">const</span> <span style="color:#e77580">v</span> <span style="color:#bfb5b2">=</span> <span style="color:#d7b55b">derive</span>(<span style="color:#a9cd5f">"core"</span><span style="color:#c2b4af">,</span> <span style="color:#e873ae">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#181311;color:#eee6e3;border-color:#37312f">
+  <div class="side" style="background:#0f0a08;border-color:#37312f">
+    <div class="tile" style="background:#ff7807;color:#0f0a08">D</div>
+    <div class="tile" style="background:#282321"></div>
+    <div class="row sel" style="background:rgba(255, 120, 7, 0.24)"></div>
+    <div class="row" style="background:#282321"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#98908e">dark juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#00d9d1;text-decoration:underline">link</span> and <span style="color:#c4bcb9">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#7aa100">done</span><span class="pill" style="background:#c18500">warn</span><span class="pill" style="background:#ff3963">error</span><span class="pill" style="background:#00a2bd">info</span>
+      <span class="btn" style="background:#ff7807;color:#0f0a08">Save</span></div>
+    <pre style="background:#0f0a08;border-color:#37312f;color:#eee6e3"><span style="color:#837874">// derive from core keys</span>
+<span style="color:#ff6101">export function</span> <span style="color:#dfbb00">resolve</span>(<span style="color:#fd00b5">theme</span>: <span style="color:#00d9d1">ThemeFile</span>) {
+  <span style="color:#ff6101">const</span> <span style="color:#fd00b5">v</span> <span style="color:#c4bcb9">=</span> <span style="color:#dfbb00">derive</span>(<span style="color:#a0d200">"core"</span><span style="color:#c7bbb7">,</span> <span style="color:#e232ff">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#fcede2;color:#4f4137;border-color:#d3c4b9">
+  <div class="side" style="background:#f2e3d8;border-color:#d3c4b9">
+    <div class="tile" style="background:#8d5038;color:#fefbf8">D</div>
+    <div class="tile" style="background:#e6d8cd"></div>
+    <div class="row sel" style="background:rgba(141, 80, 56, 0.12)"></div>
+    <div class="row" style="background:#e6d8cd"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#6b5d52">light subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#3a676a;text-decoration:underline">link</span> and <span style="color:#63554a">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#60733e">done</span><span class="pill" style="background:#83683f">warn</span><span class="pill" style="background:#af4b5c">error</span><span class="pill" style="background:#42737f">info</span>
+      <span class="btn" style="background:#8d5038;color:#fefbf8">Save</span></div>
+    <pre style="background:#f2e3d8;border-color:#d3c4b9;color:#4f4137"><span style="color:#887261">// derive from core keys</span>
+<span style="color:#97563c">export function</span> <span style="color:#5d6d3b">resolve</span>(<span style="color:#a84853">theme</span>: <span style="color:#3f6e72">ThemeFile</span>) {
+  <span style="color:#97563c">const</span> <span style="color:#a84853">v</span> <span style="color:#63554a">=</span> <span style="color:#5d6d3b">derive</span>(<span style="color:#3f7248">"core"</span><span style="color:#685343">,</span> <span style="color:#98426e">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#ffefe3;color:#392a1e;border-color:#d7c7bb">
+  <div class="side" style="background:#f5e5d8;border-color:#d7c7bb">
+    <div class="tile" style="background:#9f461f;color:#fefbf8">D</div>
+    <div class="tile" style="background:#e9d9cd"></div>
+    <div class="row sel" style="background:rgba(159, 70, 31, 0.16)"></div>
+    <div class="row" style="background:#e9d9cd"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#6e5d50">light pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#226a6f;text-decoration:underline">link</span> and <span style="color:#625245">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#5c7623">done</span><span class="pill" style="background:#8e6624">warn</span><span class="pill" style="background:#c62e54">error</span><span class="pill" style="background:#277789">info</span>
+      <span class="btn" style="background:#9f461f;color:#fefbf8">Save</span></div>
+    <pre style="background:#f5e5d8;border-color:#d7c7bb;color:#392a1e"><span style="color:#8c725e">// derive from core keys</span>
+<span style="color:#ab4c22">export function</span> <span style="color:#5a7021">resolve</span>(<span style="color:#c12d4a">theme</span>: <span style="color:#257277">ThemeFile</span>) {
+  <span style="color:#ab4c22">const</span> <span style="color:#c12d4a">v</span> <span style="color:#625245">=</span> <span style="color:#5a7021">derive</span>(<span style="color:#25773b">"core"</span><span style="color:#68503c">,</span> <span style="color:#ae2975">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#ffffff;color:#1d140d;border-color:#ded2c9">
+  <div class="side" style="background:#fbefe6;border-color:#ded2c9">
+    <div class="tile" style="background:#bf3100;color:#fefbf8">D</div>
+    <div class="tile" style="background:#eee2d9"></div>
+    <div class="row sel" style="background:rgba(191, 49, 0, 0.2)"></div>
+    <div class="row" style="background:#eee2d9"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#70645c">light juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#00726d;text-decoration:underline">link</span> and <span style="color:#4b4038">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#5f7e00">done</span><span class="pill" style="background:#976700">warn</span><span class="pill" style="background:#cf0060">error</span><span class="pill" style="background:#065eff">info</span>
+      <span class="btn" style="background:#bf3100;color:#fefbf8">Save</span></div>
+    <pre style="background:#fbefe6;border-color:#ded2c9;color:#1d140d"><span style="color:#8c7a6c">// derive from core keys</span>
+<span style="color:#dc0039">export function</span> <span style="color:#966400">resolve</span>(<span style="color:#d5007e">theme</span>: <span style="color:#007b76">ThemeFile</span>) {
+  <span style="color:#dc0039">const</span> <span style="color:#d5007e">v</span> <span style="color:#4b4038">=</span> <span style="color:#966400">derive</span>(<span style="color:#5a7800">"core"</span><span style="color:#4f3f32">,</span> <span style="color:#b700b0">42</span>);
+}</pre>
+  </div>
+</div></div></section><section><h2>Nordic <span class="sw"><i style="background:#00b0fe"></i><i style="background:#6181ff"></i><i style="background:#00e368"></i><i style="background:#00b0fe"></i><i style="background:#a0d200"></i></span><small>Fjord light: steel blue with lichen and lingonberry, over slate and birch.</small></h2>
+  <div class="cards"><div class="card" style="background:#19242e;color:#cbd2d8;border-color:#333f49">
+  <div class="side" style="background:#121d26;border-color:#333f49">
+    <div class="tile" style="background:#73bcde;color:#0d1720">D</div>
+    <div class="tile" style="background:#27333d"></div>
+    <div class="row sel" style="background:rgba(115, 188, 222, 0.14)"></div>
+    <div class="row" style="background:#27333d"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#939aa0">dark subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#7e9fd7;text-decoration:underline">link</span> and <span style="color:#a5acb2">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#839c57">done</span><span class="pill" style="background:#af8c56">warn</span><span class="pill" style="background:#d96885">error</span><span class="pill" style="background:#6a93d5">info</span>
+      <span class="btn" style="background:#73bcde;color:#0d1720">Save</span></div>
+    <pre style="background:#121d26;border-color:#333f49;color:#cbd2d8"><span style="color:#727c85">// derive from core keys</span>
+<span style="color:#73bcde">export function</span> <span style="color:#c8c175">resolve</span>(<span style="color:#de8a9b">theme</span>: <span style="color:#7ccbd0">ThemeFile</span>) {
+  <span style="color:#73bcde">const</span> <span style="color:#de8a9b">v</span> <span style="color:#a5acb2">=</span> <span style="color:#c8c175">derive</span>(<span style="color:#a6cd76">"core"</span><span style="color:#a2acb6">,</span> <span style="color:#df88be">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#141f29;color:#d8dfe6;border-color:#303c46">
+  <div class="side" style="background:#0e1821;border-color:#303c46">
+    <div class="tile" style="background:#5bb8e5;color:#0d1720">D</div>
+    <div class="tile" style="background:#242f39"></div>
+    <div class="row sel" style="background:rgba(91, 184, 229, 0.18)"></div>
+    <div class="row" style="background:#242f39"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#92999f">dark pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#6c94e2;text-decoration:underline">link</span> and <span style="color:#b1b8bf">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#819e47">done</span><span class="pill" style="background:#b48a47">warn</span><span class="pill" style="background:#e55c82">error</span><span class="pill" style="background:#6591e1">info</span>
+      <span class="btn" style="background:#5bb8e5;color:#0d1720">Save</span></div>
+    <pre style="background:#0e1821;border-color:#303c46;color:#d8dfe6"><span style="color:#78828b">// derive from core keys</span>
+<span style="color:#5bb8e5">export function</span> <span style="color:#cbc15e">resolve</span>(<span style="color:#e87490">theme</span>: <span style="color:#66ced5">ThemeFile</span>) {
+  <span style="color:#5bb8e5">const</span> <span style="color:#e87490">v</span> <span style="color:#b1b8bf">=</span> <span style="color:#cbc15e">derive</span>(<span style="color:#a0d05f">"core"</span><span style="color:#aeb9c2">,</span> <span style="color:#e871bf">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#0d151b;color:#e3e9ee;border-color:#2b343c">
+  <div class="side" style="background:#050c12;border-color:#2b343c">
+    <div class="tile" style="background:#00b0fe;color:#050c12">D</div>
+    <div class="tile" style="background:#1d252c"></div>
+    <div class="row sel" style="background:rgba(0, 176, 254, 0.24)"></div>
+    <div class="row" style="background:#1d252c"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#8d9398">dark juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#6181ff;text-decoration:underline">link</span> and <span style="color:#b9bec4">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#7aa100">done</span><span class="pill" style="background:#c18500">warn</span><span class="pill" style="background:#ff307c">error</span><span class="pill" style="background:#6688ff">info</span>
+      <span class="btn" style="background:#00b0fe;color:#050c12">Save</span></div>
+    <pre style="background:#050c12;border-color:#2b343c;color:#e3e9ee"><span style="color:#737b83">// derive from core keys</span>
+<span style="color:#00b0fe">export function</span> <span style="color:#a0d200">resolve</span>(<span style="color:#fc00b8">theme</span>: <span style="color:#00d9d1">ThemeFile</span>) {
+  <span style="color:#00b0fe">const</span> <span style="color:#fc00b8">v</span> <span style="color:#b9bec4">=</span> <span style="color:#a0d200">derive</span>(<span style="color:#00e368">"core"</span><span style="color:#b6bfc7">,</span> <span style="color:#df36ff">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#e4f3f9;color:#35464d;border-color:#bccad0">
+  <div class="side" style="background:#dbe9ef;border-color:#bccad0">
+    <div class="tile" style="background:#3a6484;color:#f8fdfe">D</div>
+    <div class="tile" style="background:#cfdde4"></div>
+    <div class="row sel" style="background:rgba(58, 100, 132, 0.12)"></div>
+    <div class="row" style="background:#cfdde4"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#51636b">light subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#4655c2;text-decoration:underline">link</span> and <span style="color:#495b63">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#60733e">done</span><span class="pill" style="background:#83683f">warn</span><span class="pill" style="background:#af4b66">error</span><span class="pill" style="background:#5265c7">info</span>
+      <span class="btn" style="background:#3a6484;color:#f8fdfe">Save</span></div>
+    <pre style="background:#dbe9ef;border-color:#bccad0;color:#35464d"><span style="color:#5e7b87">// derive from core keys</span>
+<span style="color:#3d6a9b">export function</span> <span style="color:#4b713b">resolve</span>(<span style="color:#a74760">theme</span>: <span style="color:#406f72">ThemeFile</span>) {
+  <span style="color:#3d6a9b">const</span> <span style="color:#a74760">v</span> <span style="color:#495b63">=</span> <span style="color:#4b713b">derive</span>(<span style="color:#7f633c">"core"</span><span style="color:#415d68">,</span> <span style="color:#96427a">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#e6f6fc;color:#1d3139;border-color:#becdd4">
+  <div class="side" style="background:#dbebf2;border-color:#becdd4">
+    <div class="tile" style="background:#216693;color:#f8fdfe">D</div>
+    <div class="tile" style="background:#d0dfe6"></div>
+    <div class="row sel" style="background:rgba(33, 102, 147, 0.16)"></div>
+    <div class="row" style="background:#d0dfe6"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#4e646d">light pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#3e3ee8;text-decoration:underline">link</span> and <span style="color:#445962">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#5d7724">done</span><span class="pill" style="background:#8f6724">warn</span><span class="pill" style="background:#c42e61">error</span><span class="pill" style="background:#4b5dea">info</span>
+      <span class="btn" style="background:#216693;color:#f8fdfe">Save</span></div>
+    <pre style="background:#dbebf2;border-color:#becdd4;color:#1d3139"><span style="color:#5b7d8c">// derive from core keys</span>
+<span style="color:#236ab1">export function</span> <span style="color:#3e7521">resolve</span>(<span style="color:#c02d5e">theme</span>: <span style="color:#257378">ThemeFile</span>) {
+  <span style="color:#236ab1">const</span> <span style="color:#c02d5e">v</span> <span style="color:#445962">=</span> <span style="color:#3e7521">derive</span>(<span style="color:#896122">"core"</span><span style="color:#395b68">,</span> <span style="color:#ac2986">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#ffffff;color:#0c181d;border-color:#cbd6db">
+  <div class="side" style="background:#e8f4f9;border-color:#cbd6db">
+    <div class="tile" style="background:#006ca5;color:#f8fdfe">D</div>
+    <div class="tile" style="background:#dbe7ec"></div>
+    <div class="row sel" style="background:rgba(0, 108, 165, 0.2)"></div>
+    <div class="row" style="background:#dbe7ec"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#5b6970">light juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#3b00fe;text-decoration:underline">link</span> and <span style="color:#37454a">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#5f7e00">done</span><span class="pill" style="background:#976700">warn</span><span class="pill" style="background:#d0005e">error</span><span class="pill" style="background:#4853ff">info</span>
+      <span class="btn" style="background:#006ca5;color:#f8fdfe">Save</span></div>
+    <pre style="background:#e8f4f9;border-color:#cbd6db;color:#0c181d"><span style="color:#6b828c">// derive from core keys</span>
+<span style="color:#005bfc">export function</span> <span style="color:#5a7800">resolve</span>(<span style="color:#d00098">theme</span>: <span style="color:#007c77">ThemeFile</span>) {
+  <span style="color:#005bfc">const</span> <span style="color:#d00098">v</span> <span style="color:#37454a">=</span> <span style="color:#5a7800">derive</span>(<span style="color:#008038">"core"</span><span style="color:#31464e">,</span> <span style="color:#cd0035">42</span>);
+}</pre>
+  </div>
+</div></div></section><section><h2>Tealberry <span class="sw"><i style="background:#00d7e2"></i><i style="background:#ff1bbc"></i><i style="background:#00e44b"></i><i style="background:#00d9d1"></i><i style="background:#ff6101"></i></span><small>Deep teal and cherry, with a bright green, gold and punch-red status set.</small></h2>
+  <div class="cards"><div class="card" style="background:#1c2525;color:#c8d3d4;border-color:#363f40">
+  <div class="side" style="background:#151e1e;border-color:#363f40">
+    <div class="tile" style="background:#7ccbd0;color:#101818">D</div>
+    <div class="tile" style="background:#2b3434"></div>
+    <div class="row sel" style="background:rgba(124, 203, 208, 0.14)"></div>
+    <div class="row" style="background:#2b3434"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#929c9d">dark subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#de88ad;text-decoration:underline">link</span> and <span style="color:#a3adae">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#5ca362">done</span><span class="pill" style="background:#b48956">warn</span><span class="pill" style="background:#d96e62">error</span><span class="pill" style="background:#6993d5">info</span>
+      <span class="btn" style="background:#7ccbd0;color:#101818">Save</span></div>
+    <pre style="background:#151e1e;border-color:#363f40;color:#c8d3d4"><span style="color:#6f7e7e">// derive from core keys</span>
+<span style="color:#7ccbd0">export function</span> <span style="color:#dea56d">resolve</span>(<span style="color:#de88ad">theme</span>: <span style="color:#73badf">ThemeFile</span>) {
+  <span style="color:#7ccbd0">const</span> <span style="color:#de88ad">v</span> <span style="color:#a3adae">=</span> <span style="color:#dea56d">derive</span>(<span style="color:#7cd383">"core"</span><span style="color:#9eaeaf">,</span> <span style="color:#dd8a8e">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#182020;color:#d5e1e1;border-color:#343d3d">
+  <div class="side" style="background:#111919;border-color:#343d3d">
+    <div class="tile" style="background:#66ced5;color:#101818">D</div>
+    <div class="tile" style="background:#273030"></div>
+    <div class="row sel" style="background:rgba(102, 206, 213, 0.18)"></div>
+    <div class="row" style="background:#273030"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#909b9b">dark pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#e871a9;text-decoration:underline">link</span> and <span style="color:#afbaba">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#4ca657">done</span><span class="pill" style="background:#ba8647">warn</span><span class="pill" style="background:#e56457">error</span><span class="pill" style="background:#5f92e1">info</span>
+      <span class="btn" style="background:#66ced5;color:#101818">Save</span></div>
+    <pre style="background:#111919;border-color:#343d3d;color:#d5e1e1"><span style="color:#748484">// derive from core keys</span>
+<span style="color:#66ced5">export function</span> <span style="color:#e49d55">resolve</span>(<span style="color:#e871a9">theme</span>: <span style="color:#60b1e7">ThemeFile</span>) {
+  <span style="color:#66ced5">const</span> <span style="color:#e871a9">v</span> <span style="color:#afbaba">=</span> <span style="color:#e49d55">derive</span>(<span style="color:#66d873">"core"</span><span style="color:#abbbbc">,</span> <span style="color:#e7757d">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#0f1515;color:#e1eaea;border-color:#2e3435">
+  <div class="side" style="background:#070c0d;border-color:#2e3435">
+    <div class="tile" style="background:#00d7e2;color:#070c0d">D</div>
+    <div class="tile" style="background:#1f2526"></div>
+    <div class="row sel" style="background:rgba(0, 215, 226, 0.24)"></div>
+    <div class="row" style="background:#1f2526"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#8c9494">dark juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#ff1bbc;text-decoration:underline">link</span> and <span style="color:#b7c0c0">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#00ac11">done</span><span class="pill" style="background:#c98000">warn</span><span class="pill" style="background:#ff3d54">error</span><span class="pill" style="background:#528dff">info</span>
+      <span class="btn" style="background:#00d7e2;color:#070c0d">Save</span></div>
+    <pre style="background:#070c0d;border-color:#2e3435;color:#e1eaea"><span style="color:#717d7e">// derive from core keys</span>
+<span style="color:#00d9d1">export function</span> <span style="color:#ff6101">resolve</span>(<span style="color:#fc00b8">theme</span>: <span style="color:#2770ff">ThemeFile</span>) {
+  <span style="color:#00d9d1">const</span> <span style="color:#fc00b8">v</span> <span style="color:#b7c0c0">=</span> <span style="color:#ff6101">derive</span>(<span style="color:#00e44b">"core"</span><span style="color:#b3c1c1">,</span> <span style="color:#df36ff">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#e7f3f4;color:#344849;border-color:#becacb">
+  <div class="side" style="background:#dde9ea;border-color:#becacb">
+    <div class="tile" style="background:#3b686b;color:#f8fdfd">D</div>
+    <div class="tile" style="background:#d1dede"></div>
+    <div class="row sel" style="background:rgba(59, 104, 107, 0.12)"></div>
+    <div class="row" style="background:#d1dede"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#506465">light subtle</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#9a426c;text-decoration:underline">link</span> and <span style="color:#485c5d">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#437947">done</span><span class="pill" style="background:#88673f">warn</span><span class="pill" style="background:#b34d43">error</span><span class="pill" style="background:#3f6db6">info</span>
+      <span class="btn" style="background:#3b686b;color:#f8fdfd">Save</span></div>
+    <pre style="background:#dde9ea;border-color:#becacb;color:#344849"><span style="color:#5c7d7f">// derive from core keys</span>
+<span style="color:#406f72">export function</span> <span style="color:#97573d">resolve</span>(<span style="color:#a44774">theme</span>: <span style="color:#3b67aa">ThemeFile</span>) {
+  <span style="color:#406f72">const</span> <span style="color:#a44774">v</span> <span style="color:#485c5d">=</span> <span style="color:#97573d">derive</span>(<span style="color:#3f7344">"core"</span><span style="color:#3f5f60">,</span> <span style="color:#9f434b">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#e8f6f6;color:#1b3234;border-color:#c0cece">
+  <div class="side" style="background:#ddebec;border-color:#c0cece">
+    <div class="tile" style="background:#226b70;color:#f8fdfd">D</div>
+    <div class="tile" style="background:#d2dfe0"></div>
+    <div class="row sel" style="background:rgba(34, 107, 112, 0.16)"></div>
+    <div class="row" style="background:#d2dfe0"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#4d6667">light pigment</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#b02972;text-decoration:underline">link</span> and <span style="color:#425b5c">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#277e35">done</span><span class="pill" style="background:#956524">warn</span><span class="pill" style="background:#c92f29">error</span><span class="pill" style="background:#236bd7">info</span>
+      <span class="btn" style="background:#226b70;color:#f8fdfd">Save</span></div>
+    <pre style="background:#ddebec;border-color:#c0cece;color:#1b3234"><span style="color:#577f81">// derive from core keys</span>
+<span style="color:#257378">export function</span> <span style="color:#aa4d22">resolve</span>(<span style="color:#bb2c7a">theme</span>: <span style="color:#2165c9">ThemeFile</span>) {
+  <span style="color:#257378">const</span> <span style="color:#bb2c7a">v</span> <span style="color:#425b5c">=</span> <span style="color:#aa4d22">derive</span>(<span style="color:#257832">"core"</span><span style="color:#355d5f">,</span> <span style="color:#b62a41">42</span>);
+}</pre>
+  </div>
+</div><div class="card" style="background:#ffffff;color:#0a191a;border-color:#cdd6d7">
+  <div class="side" style="background:#eaf4f5;border-color:#cdd6d7">
+    <div class="tile" style="background:#007278;color:#f8fdfd">D</div>
+    <div class="tile" style="background:#dde7e7"></div>
+    <div class="row sel" style="background:rgba(0, 114, 120, 0.2)"></div>
+    <div class="row" style="background:#dde7e7"></div>
+  </div>
+  <div class="main">
+    <div class="name" style="color:#596a6b">light juicy</div>
+    <div class="h">Theme rollout</div>
+    <div class="p">Body text with a <span style="color:#c2008d;text-decoration:underline">link</span> and <span style="color:#364647">muted notes</span>.</div>
+    <div class="pills"><span class="pill" style="background:#00890b">done</span><span class="pill" style="background:#9d6300">warn</span><span class="pill" style="background:#d40036">error</span><span class="pill" style="background:#065eff">info</span>
+      <span class="btn" style="background:#007278;color:#f8fdfd">Save</span></div>
+    <pre style="background:#eaf4f5;border-color:#cdd6d7;color:#0a191a"><span style="color:#698384">// derive from core keys</span>
+<span style="color:#007c77">export function</span> <span style="color:#de0a00">resolve</span>(<span style="color:#d00098">theme</span>: <span style="color:#005bfc">ThemeFile</span>) {
+  <span style="color:#007c77">const</span> <span style="color:#d00098">v</span> <span style="color:#364647">=</span> <span style="color:#de0a00">derive</span>(<span style="color:#008109">"core"</span><span style="color:#2f4749">,</span> <span style="color:#af00cb">42</span>);
+}</pre>
+  </div>
+</div></div></section>

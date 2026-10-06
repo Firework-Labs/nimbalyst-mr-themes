@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mr. Themes Toolkit — Edge cases</title>
+<link rel="stylesheet" href="assets/preview.css">
+</head>
+<body data-page="edge-cases.html">
+<div id="mr-topbar" class="mr-topbar"></div>
+<div class="mr-page-body">
+  <h1 class="mr-h1">Edge cases</h1>
+  <p class="mr-lede">One tile per item in <code class="mr-mono">reference/edge-cases.md</code>, rendering the exact failure mode live for the current theme. Severity badges come from the matching <code class="mr-mono">fullAudit()</code> check where one exists; several edge cases (shadows, focus-ring-on-primary, bg-active translucency) have no numeric check at all — judge those by eye.</p>
+  <div id="mr-tiles" class="mr-grid mr-grid-2"></div>
+</div>
+
+<script src="../lib/mr-themes-core.js"></script>
+<script src="data/current.js" onerror="window.MR_THEMES_DATA = null;"></script>
+<script src="assets/preview.js"></script>
+<script>
+(function () {
+  var MP = window.MRPreview;
+  var el = MP.el;
+
+  function tile(state, title, vars, checkIds, buildBody) {
+    var frame = el('div', { class: 'mr-card' });
+    var head = el('div', { style: 'display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px;' });
+    head.appendChild(el('div', { class: 'mr-card-title', style: 'margin:0;' }, [title]));
+    var badges = el('div', { style: 'display:flex;gap:4px;flex-wrap:wrap;' });
+    if (checkIds && checkIds.length) {
+      checkIds.forEach(function (id) {
+        var c = MP.findCheck(state.checks, id);
+        if (c) badges.appendChild(MP.severityBadge(c.severity));
+      });
+    } else {
+      badges.appendChild(el('span', { class: 'mr-severity mr-severity-none' }, ['not audited']));
+    }
+    head.appendChild(badges);
+    frame.appendChild(head);
+    var body = el('div', { class: 'nim-scope', style: 'border-radius:6px;padding:10px;' });
+    for (var k in state.resolved.vars) body.style.setProperty(k, state.resolved.vars[k]);
+    buildBody(body, state);
+    frame.appendChild(body);
+    frame.appendChild(el('div', { class: 'mr-caption' }, [vars]));
+    return frame;
+  }
+
+  var BUILDERS = [
+    {
+      title: '1. bg-selected composited on the wrong surface', vars: 'bg-selected, bg, bg-secondary, bg-tertiary', checkIds: ['state-selected'],
+      build: function (b) {
+        ['bg', 'bg-secondary', 'bg-tertiary'].forEach(function (s) {
+          var row = el('div', { style: 'background:var(--nim-' + s + ');padding:6px;border-radius:4px;margin-bottom:4px;' });
+          row.appendChild(el('div', { style: 'background:var(--nim-bg-selected);padding:5px 8px;border-radius:4px;color:var(--nim-text);font-size:11.5px;' }, ['selected row on ' + s]));
+          b.appendChild(row);
+        });
+      },
+    },
+    {
+      title: '2. on-primary vs native hardcoded white', vars: 'primary, on-primary', checkIds: ['on-primary'],
+      build: function (b) {
+        b.appendChild(el('button', { class: 'mr-btn', style: 'background:var(--nim-primary);color:var(--nim-on-primary);border:none;margin:0 6px 6px 0;' }, ['Uses on-primary']));
+        b.appendChild(el('span', { style: 'display:inline-block;background:var(--nim-primary);color:#ffffff;padding:6px 14px;border-radius:6px;font-size:12.5px;font-weight:600;' }, ['Native: hardcoded white']));
+      },
+    },
+    {
+      title: '3. Status pill white text', vars: 'success, warning, error, info + literal #fff', checkIds: ['success-pill', 'warning-pill', 'error-pill', 'info-pill'],
+      build: function (b) {
+        ['success', 'warning', 'error', 'info'].forEach(function (k) {
+          b.appendChild(el('span', { class: 'mr-pill mr-pill-' + k, style: 'margin-right:6px;' }, [k]));
+        });
+      },
+    },
+    {
+      title: '4. link indistinguishable from primary', vars: 'link, primary', checkIds: ['hierarchy-primary-link'],
+      build: function (b, state) {
+        b.appendChild(el('div', { style: 'display:flex;gap:12px;align-items:center;' }, [
+          el('button', { class: 'mr-btn', style: 'background:var(--nim-primary);color:var(--nim-on-primary);border:none;' }, ['Primary button']),
+          el('a', { href: '#', style: 'color:var(--nim-link);' }, ['Inline link']),
+          el('span', { style: 'width:20px;height:20px;border-radius:5px;background:var(--nim-primary);display:inline-block;' }),
+          el('span', { class: 'mr-mono', style: 'font-size:10.5px;color:var(--nim-text-faint);' }, [state.resolved.core.primary.toLowerCase() === state.resolved.core.link.toLowerCase() ? 'identical hex' : 'distinct hex']),
+        ]));
+      },
+    },
+    {
+      title: '5. muted vs faint collapsing', vars: 'text-muted, text-faint', checkIds: ['hierarchy-order-muted-faint'],
+      build: function (b) {
+        b.appendChild(el('div', { style: 'color:var(--nim-text-muted);font-size:13px;' }, ['Muted text sample Aa']));
+        b.appendChild(el('div', { style: 'color:var(--nim-text-faint);font-size:13px;' }, ['Faint text sample Aa']));
+      },
+    },
+    {
+      title: '6. disabled too readable or invisible', vars: 'text-disabled (target ≈ 2.3)', checkIds: ['hierarchy-disabled-reads-disabled'],
+      build: function (b) {
+        b.appendChild(el('button', { class: 'mr-btn mr-btn-secondary', style: 'opacity:1;color:var(--nim-text-disabled);margin-right:8px;' }, ['Disabled button']));
+        b.appendChild(el('input', { class: 'mr-input', value: 'disabled input', disabled: 'disabled', style: 'color:var(--nim-text-disabled) !important;' }));
+      },
+    },
+    {
+      title: '7. borders vanishing on bg-tertiary', vars: 'border, bg-tertiary', checkIds: ['hierarchy-border-bg'],
+      build: function (b) {
+        ['bg', 'bg-secondary', 'bg-tertiary'].forEach(function (s) {
+          b.appendChild(el('span', { style: 'display:inline-block;width:70px;height:36px;background:var(--nim-' + s + ');border:1px solid var(--nim-border);border-radius:5px;margin-right:6px;' }));
+        });
+      },
+    },
+    {
+      title: '8. code-comment too faint', vars: 'code-comment, code-bg (target 3.5, lowest of all)', checkIds: ['code-code-comment'],
+      build: function (b) {
+        b.appendChild(el('pre', { class: 'mr-code', style: 'margin:0;' }, [
+          el('span', { class: 'body' }, [el('span', { class: 'tok-comment' }, ['// this comment line is scanned first'])]),
+        ]));
+      },
+    },
+    {
+      title: '9. terminal ANSI not audited at all', vars: 'terminal-ansi-black, terminal-ansi-white, terminal-bg', checkIds: ['terminal-ansi-black', 'terminal-ansi-white'],
+      build: function (b) {
+        b.appendChild(el('div', { style: 'background:var(--terminal-bg);padding:8px;border-radius:5px;font-family:var(--mr-mono);font-size:12px;' }, [
+          el('span', { class: 'mr-ansi-black' }, ['black Aa']), document.createTextNode(' '),
+          el('span', { class: 'mr-ansi-white' }, ['white Aa']),
+        ]));
+      },
+    },
+    {
+      title: '10. diff colors vs dominant hue', vars: 'diff-add-bg/border (success), diff-remove-bg/border (error), family dominant', checkIds: null,
+      build: function (b) {
+        b.appendChild(el('div', { class: 'mr-diff-add', style: 'margin:0 0 4px;' }, ['+ added line']));
+        b.appendChild(el('button', { class: 'mr-btn', style: 'background:var(--nim-primary);color:var(--nim-on-primary);border:none;' }, ['Primary-colored action']));
+      },
+    },
+    {
+      title: '11. highlight inside a selected row', vars: 'highlight-bg/border (warning tint), bg-selected (primary tint)', checkIds: ['state-highlight', 'state-selected'],
+      build: function (b) {
+        b.appendChild(el('div', { style: 'background:var(--nim-bg-selected);padding:8px;border-radius:5px;color:var(--nim-text);font-size:12.5px;' }, [
+          'Selected line with a ', el('mark', {}, ['highlighted span']), ' inside it.',
+        ]));
+      },
+    },
+    {
+      title: '12. focus ring vanishing on a primary button', vars: 'border-focus vs literal primary outline', checkIds: null,
+      build: function (b) {
+        b.appendChild(el('button', { class: 'mr-btn mr-focus-ring-primary', style: 'background:var(--nim-primary);color:var(--nim-on-primary);border:none;' }, ['Tab-focused primary CTA']));
+      },
+    },
+    {
+      title: '13. scrollbar thumb invisible on its track', vars: 'scrollbar-thumb (= text-faint), scrollbar-track (transparent)', checkIds: ['scrollbar-thumb-bg'],
+      build: function (b) {
+        var box = el('div', { class: 'mr-scrollbox', style: 'width:100%;height:100px;' });
+        for (var i = 0; i < 12; i++) box.appendChild(el('div', { class: 'row' }, ['line ' + (i + 1)]));
+        b.appendChild(box);
+      },
+    },
+    {
+      title: '14. hover indistinguishable from selected', vars: 'bg-hover (translucent, no hue), bg-selected (translucent, primary hue)', checkIds: ['state-hover', 'state-selected'],
+      build: function (b) {
+        b.appendChild(el('div', { style: 'background:var(--nim-bg-secondary);border-radius:5px;overflow:hidden;' }, [
+          el('div', { style: 'background:var(--nim-bg-hover);padding:6px 8px;font-size:12px;color:var(--nim-text);' }, ['hovered row']),
+          el('div', { style: 'background:var(--nim-bg-selected);padding:6px 8px;font-size:12px;color:var(--nim-text);' }, ['selected row']),
+        ]));
+      },
+    },
+    {
+      title: '15. dark-theme shadows are hardcoded black', vars: 'none — every box-shadow is literal rgba(0,0,0,.25–.45)', checkIds: null,
+      build: function (b) {
+        b.appendChild(el('div', { style: 'background:var(--nim-bg);padding:16px;border-radius:8px;' }, [
+          el('div', { style: 'width:120px;height:60px;background:var(--nim-bg);border:1px solid var(--nim-border);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;color:var(--nim-text-muted);font-size:11px;' }, ['elevated']),
+        ]));
+      },
+    },
+    {
+      title: '16. comment-mark text legibility', vars: 'comment-mark (mix of warning), hardcoded #111 text', checkIds: null,
+      build: function (b) {
+        b.appendChild(el('span', { style: 'background:var(--nim-comment-mark);color:#111111;padding:2px 6px;border-radius:4px;font-size:12.5px;' }, ['comment mark text']));
+      },
+    },
+    {
+      title: '17. dominant hue vs status hue (tracker + save button)', vars: 'family dominant, success, warning, error, info', checkIds: ['hierarchy-hue-success-warning', 'hierarchy-hue-success-error', 'hierarchy-hue-warning-error'],
+      build: function (b) {
+        b.appendChild(el('div', { style: 'display:flex;gap:6px;align-items:center;' }, [
+          el('button', { class: 'mr-btn', style: 'background:var(--nim-primary);color:var(--nim-on-primary);border:none;font-size:11px;padding:4px 10px;' }, ['Save']),
+          el('span', { class: 'mr-pill mr-pill-success' }, ['success']),
+          el('span', { class: 'mr-pill mr-pill-warning' }, ['warning']),
+        ]));
+      },
+    },
+    {
+      title: '18. bg-active translucency inconsistency', vars: 'bg-active (opaque in generated presets, native default is translucent)', checkIds: null,
+      build: function (b) {
+        b.appendChild(el('span', { style: 'display:inline-block;width:32px;height:18px;border-radius:9px;background:var(--nim-bg-active);position:relative;' }, [
+          el('span', { style: 'position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--nim-text-faint);' }),
+        ]));
+      },
+    },
+    {
+      title: '19. manifest-only themes get generic syntax colors', vars: 'code-* tokens, on-primary, terminal-ansi-magenta/cyan, purple', checkIds: null,
+      build: function (b) {
+        b.appendChild(el('div', { class: 'mr-caption' }, ['Compare against the current theme (generated via buildTheme, hue-matched) in components.html’s code block — a core-only file falls back to the fixed VS Code palette instead.']));
+      },
+    },
+    {
+      title: '20. border-focus doubles as primary', vars: 'border-focus (= primary in generated presets)', checkIds: null,
+      build: function (b) {
+        b.appendChild(el('div', { style: 'display:flex;gap:10px;align-items:center;' }, [
+          el('input', { class: 'mr-input mr-focus-ring-input', value: 'focused input', style: 'width:130px;' }),
+          el('button', { class: 'mr-btn', style: 'background:var(--nim-primary);color:var(--nim-on-primary);border:none;' }, ['Primary icon/button']),
+        ]));
+      },
+    },
+  ];
+
+  function render(state) {
+    var host = document.getElementById('mr-tiles');
+    host.innerHTML = '';
+    BUILDERS.forEach(function (item) {
+      host.appendChild(tile(state, item.title, item.vars, item.checkIds, item.build));
+    });
+  }
+
+  render(MP.getState());
+  MP.onChange(render);
+})();
+</script>
+</body>
+</html>

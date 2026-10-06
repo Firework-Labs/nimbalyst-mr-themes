@@ -1,0 +1,32 @@
+{
+  "id": "my-theme-light",
+  "name": "My Theme Light",
+  "version": "1.0.0",
+  "author": "",
+  "description": "Starting point copied from Nimbalyst's default light base (BASE_LIGHT_CORE in themeSpec.ts). Replace the 20 core colors below role by role; leave extended empty until you have a reason to override a derived value (see AGENT.md).",
+  "isDark": false,
+  "colors": {
+    "bg": "#ffffff",
+    "bg-secondary": "#f8fafc",
+    "bg-tertiary": "#f1f5f9",
+    "bg-hover": "rgba(0, 0, 0, 0.04)",
+    "bg-selected": "rgba(37, 99, 235, 0.12)",
+    "bg-active": "#e2e8f0",
+    "text": "#0f172a",
+    "text-muted": "#475569",
+    "text-faint": "#64748b",
+    "text-disabled": "#94a3b8",
+    "border": "#e2e8f0",
+    "border-focus": "#3b82f6",
+    "primary": "#2563eb",
+    "primary-hover": "#1d4ed8",
+    "link": "#2563eb",
+    "link-hover": "#1d4ed8",
+    "success": "#059669",
+    "warning": "#d97706",
+    "error": "#dc2626",
+    "info": "#0284c7"
+  },
+  "extended": {},
+  "format": 1
+}

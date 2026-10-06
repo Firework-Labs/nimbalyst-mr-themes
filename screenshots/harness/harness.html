@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Mr. Themes — screenshot harness</title>
+<script>
+  // Set before paint so CSS can react with no flash (e.g. hiding the tab bar
+  // for the fullscreen gallery panel, shown only for the .nimtheme editor shot).
+  document.documentElement.setAttribute('data-shot', new URLSearchParams(location.search).get('shot') || '0');
+</script>
+<style>
+  /*
+   * Local copy of Google's Material Symbols Outlined (Apache-2.0), used only
+   * so the real extension's own icon glyphs (ui.tsx's Icon renders ligature
+   * names like "expand_more" into a span styled with this font-family) render
+   * as icons instead of raw text in these screenshots. Not fetched over the
+   * network: assets/MaterialSymbolsOutlined-Regular.ttf is a local file this
+   * harness ships under screenshots/. See screenshots/README.md.
+   */
+  @font-face {
+    font-family: 'Material Symbols Outlined';
+    src: url('assets/MaterialSymbolsOutlined-Regular.ttf') format('truetype');
+    font-weight: 100 700;
+    font-display: block;
+  }
+  /*
+   * Window-chrome REPLICA only. Structure, class names and widths come from
+   * ../../docs/nimbalyst-internals.md, ../../toolkit/reference/layout.md and
+   * DOM samples taken with a probe extension (only class names/widths were
+   * borrowed here, no real project names or
+   * paths). Every color is var(--nim-*)/var(--terminal-*), the same 75
+   * variables Nimbalyst itself writes onto <html>, so the real extension's
+   * applier (src/applier.ts) recolors this chrome exactly as it recolors the
+   * real app. The extension UI mounted into #mr-main-slot is REAL code from
+   * src/, not part of this replica.
+   */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; background: var(--nim-bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", ui-sans-serif, sans-serif; }
+  body { overflow: hidden; color: var(--nim-text); }
+  #mr-root { width: 1024px; height: 740px; overflow: hidden; display: flex; flex-direction: column; background: var(--nim-bg); }
+
+  /* ---- Window top bar ---- */
+  .window-top-bar { height: 38px; flex: none; display: flex; align-items: center; gap: 10px; padding: 0 12px 0 78px; background: var(--nim-bg-secondary); border-bottom: 1px solid var(--nim-border); -webkit-app-region: drag; }
+  .window-top-bar__workspace-name { font-size: 12px; font-weight: 600; color: var(--nim-text); }
+  .mr-topbar-branch { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--nim-text-muted); background: var(--nim-bg-tertiary); border-radius: 5px; padding: 2px 7px; }
+  .mr-topbar-spacer { flex: 1; }
+  .mr-topbar-new { width: 20px; height: 20px; border-radius: 5px; border: 1px solid var(--nim-border); background: transparent; color: var(--nim-text-muted); font-size: 13px; line-height: 1; display: flex; align-items: center; justify-content: center; }
+
+  /* ---- Row: rail / gutter / left column / main column ---- */
+  .mr-shell-row { flex: 1; display: flex; flex-direction: row; min-height: 0; }
+
+  nav.project-rail { width: 56px; flex: none; background: var(--nim-bg-secondary); border-right: 1px solid var(--nim-border); display: flex; flex-direction: column; align-items: center; padding: 8px 0; gap: 6px; overflow: hidden; }
+  .project-rail-item { position: relative; display: flex; }
+  .project-rail-item-main { width: 40px; height: 40px; border-radius: 10px; border: none; background: var(--nim-bg-tertiary); color: var(--nim-primary); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: default; }
+  .project-rail-item.is-active .project-rail-item-main { outline: 2px solid var(--nim-primary); outline-offset: -2px; background: var(--nim-bg-active); }
+  .project-rail-divider { width: 32px; height: 1px; background: var(--nim-border); margin: 4px 0; }
+  .project-rail-add { width: 40px; height: 40px; border-radius: 10px; border: 1px dashed var(--nim-border); background: transparent; color: var(--nim-text-faint); font-size: 16px; display: flex; align-items: center; justify-content: center; }
+
+  nav.navigation-gutter { width: 48px; flex: none; background: var(--nim-bg-secondary); border-right: 1px solid var(--nim-border); display: flex; flex-direction: column; align-items: center; padding: 8px 6px; }
+  .nav-section { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100%; }
+  .nav-section.nav-quick-access { flex: 1; }
+  .nav-section.nav-settings { border-top: 1px solid var(--nim-border); padding-top: 8px; margin-top: auto; }
+  button.nav-button { width: 36px; height: 36px; border-radius: 6px; border: none; background: transparent; color: var(--nim-text-muted); display: flex; align-items: center; justify-content: center; cursor: default; }
+  button.nav-button.is-active { background: var(--nim-primary); color: var(--nim-on-primary, #111827); }
+  button.nav-button svg { width: 20px; height: 20px; fill: currentColor; }
+  .material-symbols-outlined { font-size: 20px; line-height: 1; }
+
+  aside.workspace-sidebar { width: 200px; flex: none; background: var(--nim-bg-secondary); border-right: 1px solid var(--nim-border); display: flex; flex-direction: column; overflow: hidden; }
+  .workspace-color-accent { height: 3px; flex: none; background: var(--nim-primary); opacity: 0.9; }
+  .workspace-summary-header { padding: 10px 12px 8px; border-bottom: 1px solid var(--nim-border); min-height: 46px; }
+  .workspace-summary-header-top { font-size: 12.5px; font-weight: 600; color: var(--nim-text); }
+  .workspace-summary-header-path { margin-top: 2px; font-size: 10.5px; color: var(--nim-text-muted); opacity: .8; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mr-filetree { padding: 6px 4px; font-size: 12px; color: var(--nim-text-muted); overflow: hidden; }
+  .mr-tree-row { display: flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 5px; white-space: nowrap; }
+  .mr-tree-row svg { width: 14px; height: 14px; flex: none; opacity: .85; }
+  .mr-tree-row.is-selected { background: var(--nim-bg-selected); color: var(--nim-text); }
+
+  .mr-divider { width: 1px; flex: none; background: var(--nim-border); }
+
+  .main-column { flex: 1; min-width: 0; display: flex; flex-direction: column; background: var(--nim-bg); overflow: hidden; }
+  .mr-tabbar { display: none; flex: none; height: 32px; background: var(--nim-bg-secondary); border-bottom: 1px solid var(--nim-border); align-items: center; padding: 0 8px; gap: 2px; }
+  html[data-shot="2"] .mr-tabbar { display: flex; }
+  /* Shot 2 only: hide the replica's file column so the editor gets the width a real
+     window gives it when the file tree is collapsed; at ~700px the editor header's
+     "Dark theme · theme.nimtheme" line collides with the Dark toggle. */
+  html[data-shot="2"] aside.workspace-sidebar, html[data-shot="2"] aside.workspace-sidebar + .mr-divider { display: none; }
+  .mr-tab { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--nim-text); background: var(--nim-bg); border: 1px solid var(--nim-border); border-bottom: none; border-radius: 6px 6px 0 0; padding: 5px 10px; }
+  #mr-main-slot { flex: 1; min-height: 0; overflow: auto; position: relative; }
+</style>
+</head>
+<body>
+  <div id="mr-root">
+    <div class="window-top-bar" data-testid="window-top-bar">
+      <span class="window-top-bar__workspace-name" data-testid="window-top-bar-workspace-name">Atlas API</span>
+      <span class="mr-topbar-branch">⎇ main</span>
+      <span class="mr-topbar-spacer"></span>
+      <button class="mr-topbar-new" aria-hidden="true">+</button>
+    </div>
+    <div class="mr-shell-row" data-layout="workspace-row">
+      <nav class="project-rail" data-testid="project-rail" aria-label="Open projects">
+        <div class="project-rail-item is-active" data-testid="project-rail-item" data-project-path="/Users/demo/Projects/atlas-api">
+          <button class="project-rail-item-main" aria-label="Switch to project Atlas API">AA</button>
+        </div>
+        <div class="project-rail-item" data-testid="project-rail-item" data-project-path="/Users/demo/Projects/field-notes">
+          <button class="project-rail-item-main" aria-label="Switch to project Field Notes">FN</button>
+        </div>
+        <div class="project-rail-item" data-testid="project-rail-item" data-project-path="/Users/demo/Projects/orchard">
+          <button class="project-rail-item-main" aria-label="Switch to project Orchard">OR</button>
+        </div>
+        <div class="project-rail-item" data-testid="project-rail-item" data-project-path="/Users/demo/Projects/lighthouse">
+          <button class="project-rail-item-main" aria-label="Switch to project Lighthouse">LH</button>
+        </div>
+        <div class="project-rail-divider" aria-hidden="true"></div>
+        <button class="project-rail-add" data-testid="project-rail-add" aria-label="Add project to rail">+</button>
+      </nav>
+
+      <nav class="navigation-gutter" aria-label="Navigation">
+        <div class="nav-section nav-content-modes">
+          <div data-gutter-item="files"><button class="nav-button is-active" title="Files" aria-label="Files">
+            <svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg>
+          </button></div>
+          <div data-gutter-item="agent"><button class="nav-button" title="Agent" aria-label="Agent">
+            <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2v1h2a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h2V4a2 2 0 0 1 2-2zM8.5 11a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm7 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+          </button></div>
+          <div data-gutter-item="tracker"><button class="nav-button" title="Tracker" aria-label="Tracker">
+            <svg viewBox="0 0 24 24"><path d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z"/></svg>
+          </button></div>
+        </div>
+        <div class="nav-section nav-quick-access"></div>
+        <div class="nav-section nav-extension-panels">
+          <div data-gutter-item="com.fireworklabs.theme-editor.theme-library">
+            <button class="nav-button" title="Theme Gallery" aria-label="Theme Gallery">
+              <span class="material-symbols-outlined">palette</span>
+            </button>
+          </div>
+          <div data-gutter-item="terminal"><button class="nav-button" title="Terminal" aria-label="Terminal">
+            <svg viewBox="0 0 24 24"><path d="M3 4h18v16H3V4zm3 4 4 3-4 3v-2.2L7.8 11 6 9.8V8zm5 6h7v1.6h-7V14z"/></svg>
+          </button></div>
+        </div>
+        <div class="nav-section nav-settings">
+          <button class="nav-button" title="Account" aria-label="Account">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0z"/></svg>
+          </button>
+        </div>
+      </nav>
+
+      <aside class="workspace-sidebar" data-layout="left-column">
+        <div class="workspace-color-accent"></div>
+        <div class="workspace-summary-header">
+          <div class="workspace-summary-header-top">atlas-api</div>
+          <div class="workspace-summary-header-path">/Users/demo/Projects/atlas-api</div>
+        </div>
+        <div class="mr-filetree">
+          <div class="mr-tree-row"><svg viewBox="0 0 24 24" fill="var(--nim-text-faint)"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg> src</div>
+          <div class="mr-tree-row" style="padding-left:24px;"><svg viewBox="0 0 24 24" fill="var(--nim-text-faint)"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/></svg> index.ts</div>
+          <div class="mr-tree-row is-selected" style="padding-left:24px;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/></svg> app.ts</div>
+          <div class="mr-tree-row"><svg viewBox="0 0 24 24" fill="var(--nim-text-faint)"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/></svg> package.json</div>
+          <div class="mr-tree-row"><svg viewBox="0 0 24 24" fill="var(--nim-text-faint)"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/></svg> README.md</div>
+        </div>
+      </aside>
+      <div class="mr-divider" aria-hidden="true"></div>
+
+      <div class="main-column" data-layout="main-column-container">
+        <div class="mr-tabbar" data-layout="top-content-row">
+          <div class="mr-tab"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/></svg> <span>theme.nimtheme</span></div>
+        </div>
+        <div id="mr-main-slot"></div>
+      </div>
+    </div>
+  </div>
+  <script src="dist/harness.js"></script>
+</body>
+</html>

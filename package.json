@@ -1,0 +1,23 @@
+{
+  "name": "com.fireworklabs.theme-editor",
+  "version": "0.5.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/sync-kit.mjs && vite build",
+    "test": "esbuild --bundle --platform=node --format=esm --external:@nimbalyst/extension-sdk --log-level=warning tests/collection.test.ts --outfile=/tmp/mrthemes-collection.test.mjs && node /tmp/mrthemes-collection.test.mjs",
+    "sync-kit": "node scripts/sync-kit.mjs",
+    "audit": "esbuild --bundle --platform=node --format=esm --log-level=warning scripts/audit-presets.ts --outfile=/tmp/mrthemes-audit.mjs && node /tmp/mrthemes-audit.mjs",
+    "screenshots:build": "node screenshots/harness/build.mjs"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@nimbalyst/extension-sdk": "^0.5.0",
+    "@types/react": "^18.2.0",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.0.0",
+    "vite": "^7.1.12"
+  }
+}

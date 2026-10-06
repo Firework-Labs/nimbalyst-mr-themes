@@ -1,0 +1,122 @@
+{
+  "id": "com.fireworklabs.theme-editor",
+  "name": "Mr. Themes",
+  "version": "0.5.0",
+  "description": "Every project gets its own theme. Best buds with Mr. Projects. Create, preview, save, share, and apply Nimbalyst color themes, globally or per project. Ships with six theme families: 36 contrast-checked presets built on the Tailwind palette.",
+  "author": "Firework Labs",
+  "main": "dist/index.js",
+  "apiVersion": "1.0.0",
+  "permissions": {
+    "filesystem": true
+  },
+  "contributions": {
+    "customEditors": [
+      {
+        "filePatterns": [
+          "*.nimtheme"
+        ],
+        "displayName": "Theme Editor",
+        "component": "ThemeEditor",
+        "supportsSourceMode": true,
+        "supportsDiffMode": false,
+        "showDocumentHeader": true
+      }
+    ],
+    "newFileMenu": [
+      {
+        "extension": ".nimtheme",
+        "displayName": "Nimbalyst Theme",
+        "icon": "palette",
+        "defaultContent": "{\n  \"id\": \"my-theme\",\n  \"name\": \"My Theme\",\n  \"version\": \"1.0.0\",\n  \"isDark\": true,\n  \"colors\": {\n    \"bg\": \"#0f172a\",\n    \"bg-secondary\": \"#020617\",\n    \"bg-tertiary\": \"#1e293b\",\n    \"text\": \"#f8fafc\",\n    \"text-muted\": \"#cbd5e1\",\n    \"text-faint\": \"#94a3b8\",\n    \"text-disabled\": \"#64748b\",\n    \"border\": \"#1e293b\",\n    \"primary\": \"#38bdf8\",\n    \"primary-hover\": \"#7dd3fc\",\n    \"link\": \"#60a5fa\",\n    \"link-hover\": \"#93c5fd\",\n    \"success\": \"#10b981\",\n    \"warning\": \"#eab308\",\n    \"error\": \"#ef4444\",\n    \"info\": \"#38bdf8\"\n  },\n  \"format\": 1\n}\n"
+      }
+    ],
+    "fileIcons": {
+      "*.nimtheme": "palette"
+    },
+    "panels": [
+      {
+        "id": "theme-library",
+        "title": "Theme Gallery",
+        "icon": "palette",
+        "placement": "fullscreen",
+        "order": 90,
+        "tooltip": "Browse the theme families, create your own, and choose the global theme or a theme per project."
+      }
+    ],
+    "hostComponents": [
+      "ThemeApplier",
+      "GutterIcon"
+    ],
+    "configuration": {
+      "title": "Mr. Themes",
+      "properties": {
+        "enabledTheme": {
+          "type": "object",
+          "description": "The custom theme currently applied on top of the native theme. Managed by the Theme Library.",
+          "scope": "user"
+        },
+        "userThemes": {
+          "type": "array",
+          "default": [],
+          "description": "The Theme Collection: every theme, built-ins included once seeded. Managed by the Theme Gallery.",
+          "scope": "user"
+        },
+        "themeFamilies": {
+          "type": "array",
+          "default": [],
+          "description": "Theme families (name, description, optional generator hues). Managed by the Theme Gallery.",
+          "scope": "user"
+        },
+        "collectionSeeded": {
+          "type": "number",
+          "default": 0,
+          "description": "Set to 1 once the built-in themes and families have been copied into the collection.",
+          "scope": "user"
+        }
+      }
+    }
+  },
+  "marketplace": {
+    "changelog": "0.5.0: Card menus, grouping-only New family wizard with five header colors, separate Import theme and Import family, Download Family Builder Kit for Agents, Cancel in the theme editor; tray pickers fixed for long collections.\n0.4.0: Theme Collection and user theme families; every built-in theme can be edited and deleted; Restore built-ins; family export; terminal colors contrast-checked in every variation.\n0.3.0: Renamed from Nimbalyst Theme Editor; new gutter icon and help tooltip.",
+    "categories": [
+      "developer-tools"
+    ],
+    "tags": [
+      "theme",
+      "appearance",
+      "colors",
+      "customization",
+      "dark-mode",
+      "contrast",
+      "accessibility",
+      "per-project"
+    ],
+    "icon": "palette",
+    "tagline": "Every project gets its own theme. Best buds with Mr. Projects.",
+    "longDescription": "Create, preview, share and apply Nimbalyst color themes, globally or per project. Mr. Themes ships with six theme families of six themes each (light and dark, in subtle, pigment and juicy variations): 36 presets whose contrast is checked by a generator, not by hand. With Mr. Projects installed, the Theme Gallery shows which theme every open project uses and lets you change it in one click; the Theme Collection holds every theme you own, and Theme Families groups them. Edit any .nimtheme file with all 75 Nimbalyst colors, live previews and a 17-check contrast audit that can fix failing colors for you. Want a family of your own? Download the Family Builder Kit for Agents into a project and ask your agent to design, audit and preview one, then import it.\n\nHeads-up: Mr. Themes relies on Nimbalyst behavior that is not part of the extension SDK. It applies themes by writing all 75 of Nimbalyst's color variables onto the app window and watching Nimbalyst's data-theme attribute, and it restyles its own gutter button. A Nimbalyst update can make themes apply only partly, or bring back the default gutter icon, until Mr. Themes is updated. Disabling or uninstalling it returns Nimbalyst to its own theme.",
+    "screenshots": [
+      {
+        "alt": "Theme Gallery with the Theme usage tray showing the global theme and each open project's theme, above the Theme Collection",
+        "src": "screenshots/com.fireworklabs.theme-editor-0-dark.png",
+        "srcLight": "screenshots/com.fireworklabs.theme-editor-0-light.png"
+      },
+      {
+        "alt": "Theme Families: six-theme families with their header swatches, one family expanded",
+        "src": "screenshots/com.fireworklabs.theme-editor-1-dark.png",
+        "srcLight": "screenshots/com.fireworklabs.theme-editor-1-light.png"
+      },
+      {
+        "alt": "Theme editor on a .nimtheme file: color groups, live preview and the contrast audit",
+        "src": "screenshots/com.fireworklabs.theme-editor-2-dark.png",
+        "srcLight": "screenshots/com.fireworklabs.theme-editor-2-light.png"
+      }
+    ],
+    "highlights": [
+      "Six theme families × light and dark × subtle, pigment, juicy: 36 presets",
+      "Edit all 75 theme colors, not just the 20 the manifest exposes",
+      "Contrast audit and one-click repair, three UI previews, and Try live",
+      "Share as a .nimtheme file, JSON, or an installable theme extension",
+      "Group themes into families; import a theme or a family; hand agents the Family Builder Kit"
+    ]
+  }
+}

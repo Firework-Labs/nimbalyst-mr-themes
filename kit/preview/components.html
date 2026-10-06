@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mr. Themes Toolkit — Specimen sheet</title>
+<link rel="stylesheet" href="assets/preview.css">
+</head>
+<body data-page="components.html">
+<div id="mr-topbar" class="mr-topbar"></div>
+<div class="mr-page-body">
+  <h1 class="mr-h1">Component specimen sheet</h1>
+  <p class="mr-lede">Every component from <code class="mr-mono">reference/components.md</code>, every state, rendered statically side by side for one theme at a time. Captions list the exact CSS variables in play; an <span class="mr-inferred-tag">INFERRED</span> tag means the inventory could not confirm this against a live capture.</p>
+
+  <div id="mr-spec-scope" class="nim-scope" style="padding:4px 0;">
+
+    <div class="mr-section-title">Buttons</div>
+    <div class="mr-spec-row">
+      <div class="mr-spec-item"><span class="mr-spec-label">Primary / rest</span><button class="mr-btn mr-btn-primary">Save theme</button><div class="mr-caption">background: primary &middot; color: on-primary</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Primary / hover</span><button class="mr-btn mr-btn-primary is-hover">Save theme</button><div class="mr-caption">background: primary-hover</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Primary / focus (native bug)</span><button class="mr-btn mr-btn-primary is-focus">Save theme</button><div class="mr-caption">outline: primary (same as fill — see edge case 12)</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Primary / disabled</span><button class="mr-btn mr-btn-primary is-disabled">Save theme</button><div class="mr-caption">opacity .5 over primary/on-primary</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Secondary / rest</span><button class="mr-btn mr-btn-secondary">Cancel</button><div class="mr-caption">background: bg-tertiary &middot; color: text &middot; border: border</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Secondary / hover</span><button class="mr-btn mr-btn-secondary is-hover">Cancel</button><div class="mr-caption">background: bg-hover</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Secondary / disabled</span><button class="mr-btn mr-btn-secondary is-disabled">Cancel</button><div class="mr-caption">opacity .5</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Ghost / rest</span><button class="mr-btn mr-btn-ghost">Skip</button><div class="mr-caption">transparent &middot; color: text-muted</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Ghost / hover</span><button class="mr-btn mr-btn-ghost is-hover">Skip</button><div class="mr-caption">background: bg-hover</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Ghost / disabled</span><button class="mr-btn mr-btn-ghost is-disabled">Skip</button><div class="mr-caption">opacity .5</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Danger / rest</span><button class="mr-btn mr-btn-danger">Delete</button><div class="mr-caption">transparent, border+color: error</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Danger / hover<span class="mr-inferred-tag">INFERRED</span></span><button class="mr-btn mr-btn-danger is-hover">Delete</button><div class="mr-caption">withAlpha(error, .15) tint, not directly observed</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Danger / disabled</span><button class="mr-btn mr-btn-danger is-disabled">Delete</button><div class="mr-caption">opacity .5</div></div>
+    </div>
+
+    <div class="mr-section-title">Inputs, select, textarea, toggle, checkbox</div>
+    <div class="mr-spec-row">
+      <div class="mr-spec-item"><span class="mr-spec-label">Input / rest</span><input class="mr-input" value="Harbor Fog"><div class="mr-caption">bg: bg-secondary &middot; border: border &middot; !important beats global input styles</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Input / focus</span><input class="mr-input is-focus" value="Harbor Fog"><div class="mr-caption">border: border-focus + ring</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Input / disabled</span><input class="mr-input is-disabled" value="Locked" disabled><div class="mr-caption">opacity .5</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Input / error</span><input class="mr-input is-error" value="tidepool tidepool"><div class="mr-caption">border: error <span class="mr-inferred-tag">INFERRED</span></div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Input / placeholder</span><input class="mr-input placeholder-demo" value="Untitled theme…"><div class="mr-caption">color: text-faint</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Select</span><select class="mr-select"><option>Dark Subtle</option></select><div class="mr-caption">same recipe as input <span class="mr-inferred-tag">INFERRED</span></div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Textarea</span><textarea class="mr-textarea" rows="2">A near-monochrome family for long sessions.</textarea><div class="mr-caption">same recipe as input</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Toggle / off</span><span class="mr-toggle"><span class="knob"></span></span><div class="mr-caption">track: bg-active &middot; knob: text-faint</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Toggle / on</span><span class="mr-toggle is-on"><span class="knob"></span></span><div class="mr-caption">track: primary &middot; knob: on-primary</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Toggle / disabled</span><span class="mr-toggle is-disabled"><span class="knob"></span></span><div class="mr-caption">opacity .5</div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Checkbox / unchecked</span><span class="mr-checkbox"></span><div class="mr-caption">bg: bg-secondary &middot; border: border <span class="mr-inferred-tag">INFERRED</span></div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Checkbox / checked</span><span class="mr-checkbox is-checked">✓</span><div class="mr-caption">bg: primary, check: on-primary <span class="mr-inferred-tag">INFERRED</span></div></div>
+      <div class="mr-spec-item"><span class="mr-spec-label">Checkbox / disabled</span><span class="mr-checkbox is-disabled"></span><div class="mr-caption">opacity .5</div></div>
+    </div>
+
+    <div class="mr-section-title">Pills / badges (white text on every status fill)</div>
+    <div class="mr-spec-row">
+      <div class="mr-spec-item"><span class="mr-pill mr-pill-success">success</span><div class="mr-caption">background: success &middot; color: #fff literal (not on-primary)</div></div>
+      <div class="mr-spec-item"><span class="mr-pill mr-pill-warning">warning</span><div class="mr-caption">background: warning &middot; color: #fff literal — easiest to fail 3:1 (edge case 3)</div></div>
+      <div class="mr-spec-item"><span class="mr-pill mr-pill-error">error</span><div class="mr-caption">background: error &middot; color: #fff literal</div></div>
+      <div class="mr-spec-item"><span class="mr-pill mr-pill-info">info</span><div class="mr-caption">background: info &middot; color: #fff literal</div></div>
+    </div>
+
+    <div class="mr-section-title">Menus / popovers</div>
+    <div class="mr-spec-row">
+      <div class="mr-spec-item">
+        <div class="mr-menu">
+          <div class="mr-menu-item">Rename…</div>
+          <div class="mr-menu-item is-hover">Duplicate</div>
+          <div class="mr-menu-item is-selected">Set as default</div>
+          <div class="mr-menu-item">Delete</div>
+        </div>
+        <div class="mr-caption">bg: bg &middot; border: border &middot; shadow hardcoded rgba(0,0,0,.35) &middot; hover: bg-hover &middot; selected: bg-selected</div>
+      </div>
+    </div>
+
+    <div class="mr-section-title">Modal over backdrop</div>
+    <div class="mr-spec-row">
+      <div class="mr-spec-item" style="width:100%;">
+        <div class="mr-modal-demo">
+          <div class="mr-modal-backdrop">
+            <div class="mr-modal">
+              <h4>Replace project assignments?</h4>
+              <p>Re-importing "Tidepool" will keep per-project assignments if you choose Replace.</p>
+              <button class="mr-btn mr-btn-primary">Replace</button>
+              <button class="mr-btn mr-btn-ghost">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <div class="mr-caption">backdrop: hardcoded rgba(0,0,0,.45) &middot; modal: bg, border: border, shadow hardcoded rgba(0,0,0,.4) &middot; INFERRED for native modals (ours observed)</div>
+      </div>
+    </div>
+
+    <div class="mr-section-title">Toasts <span class="mr-inferred-tag">INFERRED</span></div>
+    <div class="mr-spec-row">
+      <div class="mr-spec-item"><div class="mr-toast mr-toast-success">Theme exported to tidepool.nimfamily</div><div class="mr-caption">bg, border: border, left bar: success — no toast ever observed in a probe</div></div>
+      <div class="mr-spec-item"><div class="mr-toast mr-toast-warning">1 warning left unexplained</div><div class="mr-caption">left bar: warning</div></div>
+      <div class="mr-spec-item"><div class="mr-toast mr-toast-error">Import failed: invalid JSON</div><div class="mr-caption">left bar: error</div></div>
+      <div class="mr-spec-item"><div class="mr-toast mr-toast-info">Preview data refreshed</div><div class="mr-caption">left bar: info</div></div>
+    </div>
+
+    <div class="mr-section-title">Help tooltip</div>
+    <div class="mr-spec-row">
+      <div class="mr-spec-item">
+        <div class="mr-tooltip">
+          <div class="title">Theme Gallery <kbd>⌘⇧T</kbd></div>
+          <div class="body">Browse, assign, and import color themes. Only rendered by the host for its own gutter buttons.</div>
+        </div>
+        <div class="mr-caption">bg: bg &middot; border: border &middot; shadow hardcoded &middot; title: text &middot; kbd: bg-secondary/border/text-muted &middot; body: text-muted</div>
+      </div>
+    </div>
+
+    <div class="mr-section-title">Tabs</div>
+    <div class="mr-spec-row" style="width:100%;">
+      <div class="mr-spec-item" style="width:100%;">
+        <div class="mr-tabbar" style="width:520px;">
+          <div class="mr-tab is-active">README.md <span class="dirty-dot"></span></div>
+          <div class="mr-tab">plan.md</div>
+          <div class="mr-tab is-hover">theme.ts</div>
+          <div class="mr-tab-overflow">⋯</div>
+        </div>
+        <div class="mr-caption">bar: toolbar-bg/toolbar-border &middot; active: toolbar-active + text &middot; hover: toolbar-hover &middot; dirty dot: text-faint <span class="mr-inferred-tag">INFERRED</span> (no dedicated variable)</div>
+      </div>
+    </div>
+
+    <div class="mr-section-title">File tree rows <span class="mr-inferred-tag">INFERRED state colors</span></div>
+    <div class="mr-spec-row" style="width:100%;">
+      <div class="mr-spec-item" style="width:220px;">
+        <div style="background:var(--nim-bg-secondary);border:1px solid var(--nim-border);border-radius:6px;overflow:hidden;">
+          <div class="mr-tree-row"><span class="icon">📁</span> src</div>
+          <div class="mr-tree-row is-hover" style="padding-left:26px;"><span class="icon">📄</span> index.ts (hover)</div>
+          <div class="mr-tree-row is-selected" style="padding-left:26px;"><span class="icon">📄</span> theme.ts (selected)</div>
+          <div class="mr-tree-row" style="padding-left:26px;color:var(--nim-warning);"><span class="icon">📄</span> modified.ts (git, INFERRED)</div>
+          <div class="mr-tree-row" style="padding-left:26px;color:var(--nim-text-disabled);"><span class="icon">📄</span> ignored.log (INFERRED)</div>
+        </div>
+        <div class="mr-caption">rest: transparent/text-muted &middot; hover: bg-hover &middot; selected: bg-selected/text &middot; git colors are a guess, not observed anywhere</div>
+      </div>
+    </div>
+
+    <div class="mr-section-title">Tracker kanban</div>
+    <div class="mr-spec-row" style="width:100%;">
+      <div class="mr-spec-item" style="width:100%;">
+        <div class="mr-kanban">
+          <div class="mr-kanban-col">
+            <div class="mr-kanban-title">Backlog</div>
+            <div class="mr-kanban-card">Poster builder <span class="mr-pill mr-pill-info">info</span><span class="meta">SAN-12</span></div>
+          </div>
+          <div class="mr-kanban-col">
+            <div class="mr-kanban-title">In progress</div>
+            <div class="mr-kanban-card">Theme applier <span class="mr-pill mr-pill-warning">warning</span><span class="meta">SAN-9</span></div>
+          </div>
+          <div class="mr-kanban-col">
+            <div class="mr-kanban-title">Done</div>
+            <div class="mr-kanban-card">Preset library <span class="mr-pill mr-pill-success">success</span><span class="meta">SAN-3</span></div>
+            <button class="mr-btn mr-btn-primary" style="font-size:11px;padding:4px 10px;">+ New item</button>
+          </div>
+        </div>
+        <div class="mr-caption">column: bg-secondary/border &middot; card: bg/border &middot; pill: status fill + literal white <span class="mr-inferred-tag">INFERRED</span> — never observed live</div>
+      </div>
+    </div>
+
+    <div class="mr-section-title">Settings rows, scope tabs, sidebar</div>
+    <div class="mr-spec-row" style="width:100%;">
+      <div class="mr-spec-item" style="width:260px;">
+        <div style="display:flex;gap:4px;background:var(--nim-bg-tertiary);padding:4px;border-radius:8px;">
+          <span class="mr-scope-tab is-active">Account</span>
+          <span class="mr-scope-tab">Project</span>
+        </div>
+        <div class="mr-caption">wrapper: bg-tertiary &middot; active tab: primary + literal white text (not on-primary — edge case 2)</div>
+      </div>
+      <div class="mr-spec-item" style="width:220px;">
+        <div class="mr-settings-sidebar-item">General</div>
+        <div class="mr-settings-sidebar-item is-hover">Appearance (hover)</div>
+        <div class="mr-settings-sidebar-item is-selected">Mr. Themes (selected)</div>
+        <div class="mr-caption">rest: text-muted &middot; hover: bg-hover &middot; selected: bg-selected/text — check these aren't identical (edge case 14)</div>
+      </div>
+      <div class="mr-spec-item" style="width:260px;">
+        <div class="mr-settings-row"><span class="label">Theme</span><span class="value">Tidepool Dark Subtle</span></div>
+        <div class="mr-settings-row"><span class="label">Font size</span><span class="value mr-focus-ring-input">13</span></div>
+        <div class="mr-caption">label: text-muted &middot; value: bg-secondary/border, focused: border-focus + ring</div>
+      </div>
+    </div>
+
+    <div class="mr-section-title">Diff lines</div>
+    <div class="mr-spec-row" style="width:100%;">
+      <div class="mr-spec-item" style="width:100%;">
+        <div class="mr-diff-add">+ extended['terminal-ansi-cyan'] = tinted(cyanHue, ...)</div>
+        <div class="mr-diff-remove">- extended['terminal-ansi-cyan'] = CYAN_FIXED</div>
+        <div class="mr-caption">add: diff-add-bg/border (success tint) &middot; remove: diff-remove-bg/border (error tint) <span class="mr-inferred-tag">INFERRED</span> — native --diff-* vars are a separate, non-themeable stylesheet</div>
+      </div>
+    </div>
+
+    <div class="mr-section-title">Full syntax-token code block</div>
+    <div class="mr-spec-row" style="width:100%;">
+      <pre class="mr-code" style="width:100%;"><span class="gutter">1
+2
+3
+4
+5
+6
+7</span><span class="body"><span class="tok-comment">// Nimbalyst theme loader</span>
+<span class="tok-selector">import</span> <span class="tok-punct">{ </span><span class="tok-variable">resolveTheme</span><span class="tok-punct"> } </span><span class="tok-selector">from</span> <span class="tok-attr">'./themeSpec'</span><span class="tok-punct">;</span>
+
+<span class="tok-selector">export function</span> <span class="tok-function">apply</span><span class="tok-punct">(</span><span class="tok-variable">theme</span><span class="tok-punct">: </span><span class="tok-property">ThemeFile</span><span class="tok-punct">) {</span>
+<span class="line is-selected">  <span class="tok-selector">const</span> <span class="tok-variable"> vars</span><span class="tok-operator"> = </span><span class="tok-function">resolveTheme</span><span class="tok-punct">(</span><span class="tok-variable">theme</span><span class="tok-punct">).</span><span class="tok-property">vars</span><span class="tok-punct">;</span></span>
+  document.documentElement.<span class="tok-property">style</span><span class="tok-punct">.</span><span class="tok-function">setProperty</span><span class="tok-punct">(...</span><span class="tok-punct">);</span>
+<span class="tok-punct">}</span></span></pre>
+      <div class="mr-caption" style="width:100%;">bg: code-bg &middot; border: code-border &middot; gutter: code-gutter/text-faint &middot; tokens: code-comment (line 1, target 3.5 — lowest), code-selector, code-punctuation, code-attr, code-function, code-variable, code-property, code-operator &middot; selected line (4): bg-selected over code-bg</div>
+    </div>
+
+    <div class="mr-section-title">Terminal — all 16 ANSI as text, plus cursor and selection</div>
+    <div class="mr-spec-row" style="width:100%;">
+      <div class="mr-terminal-panel" style="width:100%;height:auto;border-top:none;">
+        <div class="term-line">Standard: <span class="mr-ansi-black">black Aa</span> <span class="mr-ansi-red">red Aa</span> <span class="mr-ansi-green">green Aa</span> <span class="mr-ansi-yellow">yellow Aa</span> <span class="mr-ansi-blue">blue Aa</span> <span class="mr-ansi-magenta">magenta Aa</span> <span class="mr-ansi-cyan">cyan Aa</span> <span class="mr-ansi-white">white Aa</span></div>
+        <div class="term-line">Bright: <span class="mr-ansi-bright-black">black Aa</span> <span class="mr-ansi-bright-red">red Aa</span> <span class="mr-ansi-bright-green">green Aa</span> <span class="mr-ansi-bright-yellow">yellow Aa</span> <span class="mr-ansi-bright-blue">blue Aa</span> <span class="mr-ansi-bright-magenta">magenta Aa</span> <span class="mr-ansi-bright-cyan">cyan Aa</span> <span class="mr-ansi-bright-white">white Aa</span></div>
+        <div class="term-line" style="margin-top:6px;">Cursor: $ <span class="mr-term-cursor">&nbsp;</span> and <span class="mr-term-selection">a selected run of text</span></div>
+      </div>
+      <div class="mr-caption" style="width:100%;">text drawn directly on terminal-bg, not swatches — none of the 16 ANSI colors are contrast-audited (edge case 9); black/white default to literal #000/#fff and can vanish</div>
+    </div>
+
+    <div class="mr-section-title">Scrollbars</div>
+    <div class="mr-spec-row">
+      <div class="mr-spec-item">
+        <div class="mr-scrollbox" id="mr-scrollbox-demo">
+          <div class="row">bg.ts</div><div class="row">border.ts</div><div class="row">primary.ts</div><div class="row">success.ts</div><div class="row">warning.ts</div><div class="row">error.ts</div><div class="row">info.ts</div><div class="row">code-comment.ts</div><div class="row">terminal-ansi.ts</div><div class="row">scrollbar-thumb.ts</div>
+        </div>
+        <div class="mr-caption">thumb: scrollbar-thumb (= text-faint) &middot; track: scrollbar-track (transparent) — not separately contrast-audited</div>
+      </div>
+    </div>
+
+    <div class="mr-section-title">Focus rings</div>
+    <div class="mr-spec-row">
+      <div class="mr-spec-item"><button class="mr-btn mr-btn-secondary mr-focus-ring-primary">Focused button</button><div class="mr-caption">outline: primary (used for buttons/gutter, NOT border-focus)</div></div>
+      <div class="mr-spec-item"><input class="mr-input mr-focus-ring-input" value="Focused input"><div class="mr-caption">border + ring: border-focus (used for inputs, NOT primary) — two different variables for two focus roles</div></div>
+    </div>
+
+    <div class="mr-section-title">Tables</div>
+    <div class="mr-spec-row" style="width:100%;">
+      <table class="mr-nim-table" style="width:520px;">
+        <thead><tr><th>Variation</th><th>Character</th><th>Contrast band</th></tr></thead>
+        <tbody>
+          <tr class="even"><td>Subtle</td><td>Near monochrome</td><td>Lower end</td></tr>
+          <tr class="odd"><td>Pigment</td><td>Ink on matte paper</td><td>Mid</td></tr>
+          <tr class="even"><td>Juicy</td><td>Deep blacks, bright whites</td><td>High</td></tr>
+        </tbody>
+      </table>
+      <div class="mr-caption" style="width:100%;">border: table-border &middot; header: table-header &middot; even rows: table-cell &middot; odd rows: table-stripe (zebra)</div>
+    </div>
+
+    <div class="mr-section-title">Blockquote, highlight, comment mark, links</div>
+    <div class="mr-editor mr-spec-row" style="width:100%;display:block;padding:0;">
+      <blockquote>A quoted line uses quote-text on quote-border, three pixels wide.</blockquote>
+      <p>Regular text with a <mark>warning-tinted highlight</mark> and a <span class="comment-mark">reviewer comment mark</span> (hardcoded #111 text — edge case 16), plus a <a href="#">rest link</a> and a <a href="#" class="is-hover">hovered link</a>.</p>
+      <div class="mr-caption">blockquote: quote-text/quote-border (= text-muted/border by default) &middot; highlight: highlight-bg/border (warning tint) &middot; comment-mark: mix(warning, white/black) &middot; links: link / link-hover</div>
+    </div>
+
+    <div class="mr-section-title">Text ladder on every surface</div>
+    <div class="mr-grid mr-grid-4" style="width:100%;">
+      <div class="mr-ladder-surface mr-surface-bg"><b class="text" style="font-size:10px;text-transform:uppercase;">bg</b><span class="text">Text Aa</span><span class="muted">Muted Aa</span><span class="faint">Faint Aa</span><span class="disabled">Disabled Aa</span></div>
+      <div class="mr-ladder-surface mr-surface-bg-secondary"><b class="text" style="font-size:10px;text-transform:uppercase;">bg-secondary</b><span class="text">Text Aa</span><span class="muted">Muted Aa</span><span class="faint">Faint Aa</span><span class="disabled">Disabled Aa</span></div>
+      <div class="mr-ladder-surface mr-surface-bg-tertiary"><b class="text" style="font-size:10px;text-transform:uppercase;">bg-tertiary</b><span class="text">Text Aa</span><span class="muted">Muted Aa</span><span class="faint">Faint Aa</span><span class="disabled">Disabled Aa</span></div>
+      <div class="mr-surface-bg" style="border-radius:6px;padding:0;overflow:hidden;">
+        <div class="mr-ladder-surface mr-overlay-hover"><b class="text" style="font-size:10px;text-transform:uppercase;">bg + hover</b><span class="text">Text Aa</span><span class="muted">Muted Aa</span><span class="faint">Faint Aa</span><span class="disabled">Disabled Aa</span></div>
+      </div>
+      <div class="mr-surface-bg" style="border-radius:6px;padding:0;overflow:hidden;">
+        <div class="mr-ladder-surface mr-overlay-selected"><b class="text" style="font-size:10px;text-transform:uppercase;">bg + selected</b><span class="text">Text Aa</span><span class="muted">Muted Aa</span><span class="faint">Faint Aa</span><span class="disabled">Disabled Aa</span></div>
+      </div>
+    </div>
+    <div class="mr-caption">the last two nest a real translucent bg-hover / bg-selected layer over an opaque bg base — the browser composites it for real, unlike the audit's white-composite math (variables.md translucency note)</div>
+
+  </div>
+</div>
+
+<script src="../lib/mr-themes-core.js"></script>
+<script src="data/current.js" onerror="window.MR_THEMES_DATA = null;"></script>
+<script src="assets/preview.js"></script>
+<script>
+(function () {
+  var MP = window.MRPreview;
+  var scope = document.getElementById('mr-spec-scope');
+  function render(state) { MP.applyTheme(scope, state.theme); }
+  render(MP.getState());
+  MP.onChange(render);
+})();
+</script>
+</body>
+</html>

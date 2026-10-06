@@ -1,0 +1,32 @@
+{
+  "id": "my-theme-dark",
+  "name": "My Theme Dark",
+  "version": "1.0.0",
+  "author": "",
+  "description": "Starting point copied from Nimbalyst's Crystal Dark base (BASE_DARK_CORE in themeSpec.ts). Replace the 20 core colors below role by role; leave extended empty until you have a reason to override a derived value (see AGENT.md).",
+  "isDark": true,
+  "colors": {
+    "bg": "#0f172a",
+    "bg-secondary": "#020617",
+    "bg-tertiary": "#1e293b",
+    "bg-hover": "rgba(255, 255, 255, 0.05)",
+    "bg-selected": "rgba(56, 189, 248, 0.15)",
+    "bg-active": "#4B5563",
+    "text": "#f8fafc",
+    "text-muted": "#cbd5e1",
+    "text-faint": "#94a3b8",
+    "text-disabled": "#64748b",
+    "border": "#1e293b",
+    "border-focus": "#3B82F6",
+    "primary": "#38bdf8",
+    "primary-hover": "#7dd3fc",
+    "link": "#60A5FA",
+    "link-hover": "#93C5FD",
+    "success": "#10B981",
+    "warning": "#EAB308",
+    "error": "#EF4444",
+    "info": "#38bdf8"
+  },
+  "extended": {},
+  "format": 1
+}

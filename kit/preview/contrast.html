@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mr. Themes Toolkit — Contrast audit</title>
+<link rel="stylesheet" href="assets/preview.css">
+</head>
+<body data-page="contrast.html">
+<div id="mr-topbar" class="mr-topbar"></div>
+<div class="mr-page-body">
+  <h1 class="mr-h1">Contrast audit, made visual</h1>
+  <p class="mr-lede">Every <code class="mr-mono">fullAudit()</code> check for the current theme, grouped, with a live rendered sample — translucent backgrounds (selected, hover, diff, highlight, toolbar-active, terminal-selection) are shown already composited onto their real surface, not onto white the way the raw contrast math does (see <code class="mr-mono">reference/variables.md</code>'s translucency note).</p>
+
+  <div class="mr-filters">
+    <button class="mr-filter-btn is-active" data-filter="all">All checks</button>
+    <button class="mr-filter-btn" data-filter="issues">Warn + fail only</button>
+  </div>
+
+  <div id="mr-groups"></div>
+
+  <div class="mr-section-title">Hierarchy panel</div>
+  <div id="mr-hierarchy" class="mr-grid mr-grid-2"></div>
+
+  <div class="mr-section-title" id="mr-family-title" style="display:none;">Family audit</div>
+  <div id="mr-family"></div>
+</div>
+
+<script src="../lib/mr-themes-core.js"></script>
+<script src="data/current.js" onerror="window.MR_THEMES_DATA = null;"></script>
+<script src="assets/preview.js"></script>
+<script>
+(function () {
+  var MP = window.MRPreview;
+  var el = MP.el;
+
+  var GROUP_TITLES = {
+    text: 'Text', accent: 'Accent', status: 'Status', code: 'Code blocks', terminal: 'Terminal',
+    surfaces: 'Non-text (WCAG 1.4.11)', states: 'Translucent state layers (composited)', hierarchy: 'Hierarchy', family: 'Family',
+  };
+  var GROUP_ORDER = ['text', 'accent', 'status', 'code', 'terminal', 'states', 'surfaces', 'hierarchy'];
+
+  var currentFilter = 'all';
+
+  function sampleCell(c) {
+    if (c.fg && c.bg) {
+      var box = el('span', { style: 'display:inline-flex;align-items:center;padding:4px 10px;border-radius:5px;font-size:12px;background:' + c.bg + ';color:' + c.fg + ';border:1px solid rgba(128,128,128,.25);' }, ['Aa Sample']);
+      return box;
+    }
+    return el('span', { style: 'color:var(--chrome-faint);font-size:11px;' }, ['—']);
+  }
+
+  function checkRow(c) {
+    var tr = el('tr');
+    tr.appendChild(el('td', {}, [c.label]));
+    tr.appendChild(el('td', {}, [sampleCell(c)]));
+    tr.appendChild(el('td', { class: 'mr-num' }, [MP.fmtRatio(c.ratio) + (c.target !== undefined ? ' / ' + c.target : '')]));
+    tr.appendChild(el('td', {}, [MP.severityBadge(c.severity)]));
+    tr.appendChild(el('td', { style: 'color:var(--chrome-faint);font-size:11px;' }, [c.note || '']));
+    return tr;
+  }
+
+  function renderGroups(state) {
+    var host = document.getElementById('mr-groups');
+    host.innerHTML = '';
+    var byGroup = {};
+    state.checks.forEach(function (c) {
+      if (c.group === 'hierarchy') return; // shown in the dedicated hierarchy panel + its own table below
+      (byGroup[c.group] = byGroup[c.group] || []).push(c);
+    });
+    GROUP_ORDER.filter(function (g) { return g !== 'hierarchy'; }).forEach(function (g) {
+      var checks = (byGroup[g] || []).filter(function (c) { return currentFilter === 'all' || c.severity !== 'pass'; });
+      if (!checks.length) return;
+      host.appendChild(el('div', { class: 'mr-section-title' }, [GROUP_TITLES[g] || g]));
+      var table = el('table', { class: 'mr-table' });
+      table.appendChild(el('thead', {}, [el('tr', {}, [el('th', {}, ['Check']), el('th', {}, ['Sample']), el('th', {}, ['Ratio / target']), el('th', {}, ['Severity']), el('th', {}, ['Note'])])]));
+      var tbody = el('tbody');
+      checks.forEach(function (c) { tbody.appendChild(checkRow(c)); });
+      table.appendChild(tbody);
+      host.appendChild(table);
+    });
+
+    // Hierarchy group as its own table (the raw checks), below the curated visual panel.
+    var hchecks = state.checks.filter(function (c) { return c.group === 'hierarchy' && (currentFilter === 'all' || c.severity !== 'pass'); });
+    if (hchecks.length) {
+      host.appendChild(el('div', { class: 'mr-section-title' }, ['Hierarchy — raw checks']));
+      var htable = el('table', { class: 'mr-table' });
+      htable.appendChild(el('thead', {}, [el('tr', {}, [el('th', {}, ['Check']), el('th', {}, ['Sample']), el('th', {}, ['Ratio / target']), el('th', {}, ['Severity']), el('th', {}, ['Note'])])]));
+      var htbody = el('tbody');
+      hchecks.forEach(function (c) { htbody.appendChild(checkRow(c)); });
+      htable.appendChild(htbody);
+      host.appendChild(htable);
+    }
+  }
+
+  function surfaceStep(core, a, b) {
+    var ratio = MrThemes.contrastRatio(core[a], core[b]);
+    return el('div', { class: 'mr-card' }, [
+      el('div', { style: 'display:flex;gap:8px;align-items:center;' }, [
+        el('span', { style: 'width:32px;height:32px;border-radius:5px;background:' + core[a] + ';border:1px solid var(--chrome-border);' }),
+        el('span', { style: 'width:32px;height:32px;border-radius:5px;background:' + core[b] + ';border:1px solid var(--chrome-border);' }),
+        el('span', { class: 'mr-mono', style: 'font-size:11px;color:var(--chrome-muted);' }, [a + ' vs ' + b + ': ' + ratio.toFixed(2) + ':1']),
+      ]),
+    ]);
+  }
+
+  function renderHierarchy(state) {
+    var host = document.getElementById('mr-hierarchy');
+    host.innerHTML = '';
+    var core = state.resolved.core;
+
+    // Text ladder on every surface.
+    var ladderCard = el('div', { class: 'mr-card' });
+    ladderCard.appendChild(el('div', { class: 'mr-card-title' }, ['Text ladder per surface']));
+    ['bg', 'bg-secondary', 'bg-tertiary'].forEach(function (surf) {
+      var row = el('div', { style: 'display:flex;gap:12px;align-items:center;padding:4px 0;background:' + core[surf] + ';border-radius:4px;padding-left:8px;margin-bottom:4px;' });
+      row.appendChild(el('span', { style: 'font-size:10px;color:' + core.text + ';width:80px;font-family:var(--mr-mono);' }, [surf]));
+      row.appendChild(el('span', { style: 'color:' + core.text }, ['text']));
+      row.appendChild(el('span', { style: 'color:' + core['text-muted'] }, ['muted']));
+      row.appendChild(el('span', { style: 'color:' + core['text-faint'] }, ['faint']));
+      row.appendChild(el('span', { style: 'color:' + core['text-disabled'] }, ['disabled']));
+      ladderCard.appendChild(row);
+    });
+    host.appendChild(ladderCard);
+
+    // Surface steps.
+    var stepsCard = el('div', { class: 'mr-card' });
+    stepsCard.appendChild(el('div', { class: 'mr-card-title' }, ['Surface steps (pairwise ratio)']));
+    stepsCard.appendChild(surfaceStep(core, 'bg', 'bg-secondary'));
+    stepsCard.appendChild(surfaceStep(core, 'bg-secondary', 'bg-tertiary'));
+    stepsCard.appendChild(surfaceStep(core, 'bg', 'bg-tertiary'));
+    host.appendChild(stepsCard);
+
+    // Status hues together.
+    var statusCard = el('div', { class: 'mr-card' });
+    statusCard.appendChild(el('div', { class: 'mr-card-title' }, ['Status hues (distinguishable?)']));
+    var row = el('div', { style: 'display:flex;gap:8px;' });
+    ['success', 'warning', 'error', 'info'].forEach(function (k) {
+      row.appendChild(el('div', { style: 'text-align:center;' }, [
+        el('div', { style: 'width:48px;height:32px;border-radius:5px;background:' + core[k] + ';border:1px solid var(--chrome-border);' }),
+        el('div', { style: 'font-size:10px;color:var(--chrome-muted);margin-top:3px;' }, [k]),
+      ]));
+    });
+    statusCard.appendChild(row);
+    host.appendChild(statusCard);
+
+    // Primary vs link.
+    var plCard = el('div', { class: 'mr-card' });
+    plCard.appendChild(el('div', { class: 'mr-card-title' }, ['Primary vs link (edge case 4)']));
+    var demo = el('div', { style: 'background:' + core.bg + ';padding:10px;border-radius:6px;display:flex;gap:10px;align-items:center;' });
+    demo.appendChild(el('button', { class: 'mr-btn', style: 'background:' + core.primary + ';color:' + state.resolved.extended['on-primary'] + ';border:none;font-size:12px;padding:5px 12px;' }, ['Primary button']));
+    demo.appendChild(el('a', { href: '#', style: 'color:' + core.link + ';font-size:13px;' }, ['A link']));
+    demo.appendChild(el('span', { style: 'font-size:10.5px;color:' + core.primary + ';' }, [core.primary.toLowerCase() === core.link.toLowerCase() ? 'IDENTICAL' : 'distinct hex']));
+    plCard.appendChild(demo);
+    host.appendChild(plCard);
+  }
+
+  function renderFamily(state) {
+    var titleEl = document.getElementById('mr-family-title');
+    var host = document.getElementById('mr-family');
+    host.innerHTML = '';
+    if (state.themes.length < 2) { titleEl.style.display = 'none'; return; }
+    titleEl.style.display = '';
+    var famChecks = MrThemes.familyAudit(state.themes).filter(function (c) { return currentFilter === 'all' || c.severity !== 'pass'; });
+    var table = el('table', { class: 'mr-table' });
+    table.appendChild(el('thead', {}, [el('tr', {}, [el('th', {}, ['Check']), el('th', {}, ['Ratio / target']), el('th', {}, ['Severity']), el('th', {}, ['Note'])])]));
+    var tbody = el('tbody');
+    famChecks.forEach(function (c) {
+      var tr = el('tr');
+      tr.appendChild(el('td', {}, [c.label]));
+      tr.appendChild(el('td', { class: 'mr-num' }, [MP.fmtRatio(c.ratio) + (c.target !== undefined ? ' / ' + c.target : '')]));
+      tr.appendChild(el('td', {}, [MP.severityBadge(c.severity)]));
+      tr.appendChild(el('td', { style: 'color:var(--chrome-faint);font-size:11px;' }, [c.note || '']));
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    host.appendChild(table);
+  }
+
+  function renderAll(state) {
+    renderGroups(state);
+    renderHierarchy(state);
+    renderFamily(state);
+  }
+
+  document.querySelectorAll('.mr-filter-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.mr-filter-btn').forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      currentFilter = btn.getAttribute('data-filter');
+      renderAll(MP.getState());
+    });
+  });
+
+  renderAll(MP.getState());
+  MP.onChange(renderAll);
+})();
+</script>
+</body>
+</html>

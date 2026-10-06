@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mr. Themes Toolkit — App shell</title>
+<link rel="stylesheet" href="assets/preview.css">
+</head>
+<body data-page="app.html">
+<div id="mr-topbar" class="mr-topbar"></div>
+<div class="mr-page-body">
+  <h1 class="mr-h1">Full app shell — 1440×900</h1>
+  <p class="mr-lede">One theme at a time (switch above). Geometry per <code class="mr-mono">reference/layout.md</code>: 38px top bar, 88px rail (wide, Mr. Projects tiles), 48px gutter, 220px left column, flex main column, 190px terminal, 280px agent panel, 24px status bar.</p>
+
+  <div id="mr-shell-scope" class="mr-shell">
+    <div class="mr-window-top">
+      <span class="dot"></span>
+      <span class="name">mr-themes-toolkit</span>
+      <span class="branch">git:(main)</span>
+      <span class="spacer"></span>
+      <span class="wbtn">⌘</span>
+      <span class="wbtn">+</span>
+    </div>
+    <div class="mr-shell-row">
+      <!-- Project rail: wide, Mr. Projects tiles, 40% inactive -->
+      <nav class="mr-rail">
+        <div class="mr-rail-item is-active">
+          <div class="mr-rail-tile">MT<span class="mr-rail-badge">3</span></div>
+          <div class="mr-rail-name">Mr. Themes Toolkit</div>
+        </div>
+        <div class="mr-rail-item is-inactive">
+          <div class="mr-rail-tile">PT</div>
+          <div class="mr-rail-name">Project Theme</div>
+        </div>
+        <div class="mr-rail-item is-inactive">
+          <div class="mr-rail-tile">NP<span class="mr-rail-badge">1</span></div>
+          <div class="mr-rail-name">Nimbalyst Probe</div>
+        </div>
+        <div class="mr-rail-rule"></div>
+        <div class="mr-rail-label">Archived</div>
+        <div class="mr-rail-item is-inactive">
+          <div class="mr-rail-tile">FN</div>
+          <div class="mr-rail-name">Field Notes archive</div>
+        </div>
+      </nav>
+
+      <!-- Navigation gutter -->
+      <nav class="mr-gutter">
+        <div class="mr-gutter-btn">☰</div>
+        <div class="mr-gutter-btn is-active mr-gutter-focus" title="Agent (active + focus ring)">◈</div>
+        <div class="mr-gutter-btn">☷</div>
+        <div class="mr-gutter-spacer"></div>
+        <div class="mr-gutter-btn" title="Mr. Themes gallery">▤</div>
+        <div class="mr-gutter-btn">⌘`</div>
+        <div class="mr-gutter-btn">⚙</div>
+      </nav>
+
+      <!-- Left column: Files -->
+      <aside class="mr-leftcol">
+        <div class="mr-leftcol-header">mr-themes-toolkit</div>
+        <div class="mr-section-label">Files</div>
+        <div class="mr-tree">
+          <div class="mr-tree-row"><span class="icon">▸</span> reference</div>
+          <div class="mr-tree-row" style="padding-left:26px;"><span class="icon">📄</span> components.md</div>
+          <div class="mr-tree-row is-hover" style="padding-left:26px;"><span class="icon">📄</span> layout.md</div>
+          <div class="mr-tree-row" style="padding-left:26px;"><span class="icon">📄</span> variables.md</div>
+          <div class="mr-tree-row"><span class="icon">▾</span> preview</div>
+          <div class="mr-tree-row is-selected" style="padding-left:26px;"><span class="icon">📄</span> app.html</div>
+          <div class="mr-tree-row" style="padding-left:26px;"><span class="icon">📄</span> components.html</div>
+          <div class="mr-tree-row" style="padding-left:26px;"><span class="icon">📄</span> contrast.html</div>
+          <div class="mr-tree-row"><span class="icon">📄</span> AGENT.md</div>
+          <div class="mr-tree-row"><span class="icon">📄</span> README.md</div>
+          <div class="mr-tree-row"><span class="icon">📄</span> build.mjs</div>
+        </div>
+      </aside>
+
+      <!-- Main column -->
+      <div class="mr-main">
+        <div class="mr-tabbar">
+          <div class="mr-tab is-active">📄 layout.md <span class="dirty-dot"></span></div>
+          <div class="mr-tab">📄 components.md</div>
+          <div class="mr-tab is-hover">📄 AGENT.md</div>
+          <div class="mr-tab-overflow">⋯</div>
+        </div>
+        <div class="mr-editor">
+          <h2>Theme rollout plan</h2>
+          <p>The <a href="#">Mr. Themes</a> family ships six variants per family: two factions (<code class="inline">dark</code>/<code class="inline">light</code>) &times; three variations. <span class="muted">Muted text explains supporting detail</span>, and <span class="faint">faint text marks metadata like the date below</span>.</p>
+          <p class="faint">Updated 2026-09-24 by Mr. Themes Toolkit</p>
+          <blockquote>Every theme needs a full audit pass before it ships — <mark>0 fail, every warn explained</mark> is the bar.</blockquote>
+          <h3>Checklist</h3>
+          <ul class="tasks">
+            <li>☑️ Generate six variants from hues</li>
+            <li>☑️ Run <code class="inline">mrthemes audit</code></li>
+            <li>⬜ Review edge cases on <a href="#" class="is-hover">edge-cases.html</a></li>
+            <li>⬜ Export and hand off for import</li>
+          </ul>
+          <table class="mr-nim-table">
+            <thead><tr><th>Stage</th><th>Owner</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr class="even"><td>Generate</td><td>Agent</td><td><span class="mr-pill mr-pill-success">done</span></td></tr>
+              <tr class="odd"><td>Audit</td><td>Agent</td><td><span class="mr-pill mr-pill-warning">warn</span></td></tr>
+              <tr class="even"><td>Import</td><td>You</td><td><span class="mr-pill mr-pill-info">pending</span></td></tr>
+            </tbody>
+          </table>
+          <pre class="mr-code"><span class="gutter">1
+2
+3
+4</span><span class="body"><span class="tok-comment">// derive extended colors from the 20 core keys</span>
+<span class="tok-selector">export function</span> <span class="tok-function">resolveTheme</span><span class="tok-punct">(</span><span class="tok-variable">theme</span><span class="tok-punct">:</span> <span class="tok-property">ThemeFile</span><span class="tok-punct">) {</span>
+<span class="line is-selected">  <span class="tok-selector">const</span> <span class="tok-variable">vars</span> <span class="tok-operator">=</span> <span class="tok-function">deriveExtended</span><span class="tok-punct">(</span><span class="tok-attr">core</span><span class="tok-punct">, isDark);</span></span>
+<span class="tok-punct">}</span></span></pre>
+          <div class="mr-diff-add">+ added: <span class="comment-mark">extended.terminal-ansi-cyan</span> for pigment variation</div>
+          <div class="mr-diff-remove">- removed: hardcoded VS Code syntax fallback</div>
+        </div>
+        <div class="mr-terminal-panel">
+          <div class="term-line"><span class="mr-ansi-green">➜</span> <span class="mr-ansi-cyan">mr-themes-toolkit</span> <span class="mr-ansi-bright-black">git:(</span><span class="mr-ansi-red">main</span><span class="mr-ansi-bright-black">)</span> node cli/mrthemes.mjs audit work/tidepool.nimfamily</div>
+          <div class="term-line"><span class="mr-ansi-yellow">warn</span> tidepool-dark-subtle: code-comment 3.3/3.5</div>
+          <div class="term-line"><span class="mr-ansi-green">✓</span> 5/6 themes clean, 1 warning, 0 failing</div>
+          <div class="term-line">$ <span class="mr-term-cursor">&nbsp;</span><span class="mr-term-selection">node cli/mrthemes.mjs preview work/tidepool.nimfamily</span></div>
+          <div class="term-line" style="margin-top:6px;">
+            <span class="mr-ansi-black">█</span><span class="mr-ansi-red">█</span><span class="mr-ansi-green">█</span><span class="mr-ansi-yellow">█</span><span class="mr-ansi-blue">█</span><span class="mr-ansi-magenta">█</span><span class="mr-ansi-cyan">█</span><span class="mr-ansi-white">█</span>
+            <span class="mr-ansi-bright-black">█</span><span class="mr-ansi-bright-red">█</span><span class="mr-ansi-bright-green">█</span><span class="mr-ansi-bright-yellow">█</span><span class="mr-ansi-bright-blue">█</span><span class="mr-ansi-bright-magenta">█</span><span class="mr-ansi-bright-cyan">█</span><span class="mr-ansi-bright-white">█</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agent panel -->
+      <aside class="mr-agent-panel">
+        <div class="mr-msg-user">Make the Tidepool subtle theme's comment color pass 3.5:1.</div>
+        <div class="mr-msg-assistant">Sure — <b>code-comment</b> was 3.3:1 on <b>code-bg</b>. I nudged the neutral shade one step darker and re-ran the audit.</div>
+        <div class="mr-toolcall">
+          <div class="head">▸ node cli/mrthemes.mjs audit work/tidepool.nimfamily</div>
+          tidepool-dark-subtle: pass=71 warn=0 fail=0
+        </div>
+        <div class="mr-msg-assistant">All six variants are clean now. Want me to export it?</div>
+        <div class="mr-agent-input">Message Claude…</div>
+      </aside>
+    </div>
+    <div class="mr-statusbar">
+      <span class="ok">●</span> <span>main</span>
+      <span>UTF-8</span>
+      <span>Markdown</span>
+      <span style="margin-left:auto;">Ln 3, Col 42</span>
+    </div>
+  </div>
+</div>
+
+<script src="../lib/mr-themes-core.js"></script>
+<script src="data/current.js" onerror="window.MR_THEMES_DATA = null;"></script>
+<script src="assets/preview.js"></script>
+<script>
+(function () {
+  var MP = window.MRPreview;
+  var scope = document.getElementById('mr-shell-scope');
+  function render(state) { MP.applyTheme(scope, state.theme); }
+  render(MP.getState());
+  MP.onChange(render);
+})();
+</script>
+</body>
+</html>
