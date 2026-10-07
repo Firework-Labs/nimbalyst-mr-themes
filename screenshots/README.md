@@ -5,9 +5,9 @@
 
 | Shot | What it shows |
 | --- | --- |
-| 0 | The Theme Gallery: header, the "Theme usage" tray with the demo projects, and the top of the Theme Collection grid. |
+| 0 | The Theme Gallery: header, the "Theme usage" tray with the demo projects, and the top of the Theme Collection grid. Every thumbnail in the frame is a different family, and light and dark are mixed (see "Demo themes" below). |
 | 1 | The Theme Gallery scrolled down to "Theme Families", with the Harbor family expanded to show its themes. |
-| 2 | The `.nimtheme` Theme Editor open on a sample theme: color controls on the left, the live isolated preview and the contrast audit on the right. |
+| 2 | The `.nimtheme` Theme Editor reviewing a bright light theme (Ember Light Juicy, orange) inside an app wearing a dark theme of another hue (Grove Dark Juicy, green): color controls on the left, the live isolated preview and the contrast audit on the right. One image, saved under both the `-2-dark` and `-2-light` names. |
 
 ## What these are, honestly
 
@@ -36,6 +36,28 @@ API (the open one), Field Notes, Orchard and Lighthouse, under
 `/Users/demo/Projects/...`. The rail initials in the replica are AA, FN, OR
 and LH; the editor's own preview draws its mini rail as AT, FN, OR and LH,
 which is the extension's built-in preview content.
+
+## Demo themes
+
+- **Global theme** (shots 0 and 1): Plum Dark Juicy for `theme=dark`, Lagoon
+  Light Pigment for `theme=light`.
+- **Theme usage tray** (`harness/demoData.ts`): every demo project carries its
+  own theme, from different families and both factions. Dark shot: Atlas API
+  Ember Dark Juicy, Field Notes Grove Light Pigment, Orchard Harbor Light
+  Juicy, Lighthouse Rosewater Dark Pigment. Light shot: Atlas API as before,
+  Field Notes Plum Light Juicy, Orchard Grove Light Pigment, Lighthouse as
+  before (so no card repeats the global theme's hue). The tray clips to the
+  first three cards at this width.
+- **Theme Collection order** (`seedVariedCollection()` in `harness/harness.tsx`):
+  the harness stores the collection through the extension's own
+  `setCollection()` (which also sets `collectionSeeded` = 1) in an interleaved
+  order, so hue and light/dark change from one card to the next instead of
+  running family by family. The first cards are Rosewater Light Juicy, Harbor
+  Dark Juicy, Lagoon Light Pigment, Ember Dark Subtle. All 36 presets are
+  still present; only the order differs from the built-in one.
+- **Shot 2**: the replica window wears Grove Dark Juicy while the editor is
+  open on Ember Light Juicy, so the app theme differs from shot 0 and the
+  edited theme is light, bright and of a different hue.
 
 ## Rebuilding
 
@@ -70,6 +92,10 @@ Navigate between shots in one session with `browser_navigate` (same URL,
 different query string). The zoom is per page load, so set it again after
 each navigation.
 
+The harness page loads `dist/harness.js` with a timestamp query, so a rebuilt
+bundle is never served stale by the preview browser. If you still see old
+content, navigate to the URL with an extra throwaway query param (`&r=2`).
+
 Query params (read in `harness/harness.tsx`):
 
 - `shot=0` (default): the Theme Gallery at the top of the page.
@@ -78,14 +104,21 @@ Query params (read in `harness/harness.tsx`):
   itself: after load, run `browser_evaluate` to scroll the gallery's scroll
   container to the "Theme Families" section head and click the Harbor family
   header to expand it, then capture.
-- `shot=2`: the `.nimtheme` Theme Editor on a sample theme. Dark opens the
-  real `harbor-fog.nimtheme` sample file; light opens the built-in Harbor
-  Light Pigment preset serialized through the real file serializer. The file
-  name is kept short (`theme.nimtheme`) so the header line
-  "Dark theme · theme.nimtheme" fits.
-- `theme=dark|light`: which built-in preset is applied globally (Plum Dark
-  Juicy or Lagoon Light Pigment), which recolors the whole replica window
-  through the real applier. Default is dark.
+- `shot=2`: the `.nimtheme` Theme Editor. It opens the built-in preset named
+  by `edit` (default `ember-light-juicy`), serialized through the real file
+  serializer, in a window themed by `app` (default `grove-dark-juicy`);
+  `theme=` is ignored for this shot. The file name is kept short
+  (`theme.nimtheme`) so the header line "Light theme · theme.nimtheme" fits.
+- `app=<preset id>`: shot 2 only, the preset applied globally to the replica
+  window, for example `harbor-dark-juicy`. The window's dark or light base
+  follows that preset's faction.
+- `edit=<preset id>`: shot 2 only, the preset opened in the editor, for
+  example `rosewater-light-juicy`. The special value `harbor-fog-sample`
+  opens the real `harbor-fog.nimtheme` sample file instead.
+- `theme=dark|light`: shots 0 and 1, which built-in preset is applied globally
+  (Plum Dark Juicy or Lagoon Light Pigment), which recolors the whole replica
+  window through the real applier. Default is dark. It also selects the demo
+  project assignments in the tray.
 
 For shot 2 the replica's file column is hidden (CSS keyed on
 `html[data-shot="2"]` in `harness.html`). With it shown, the editor gets only

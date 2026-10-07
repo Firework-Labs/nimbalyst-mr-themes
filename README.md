@@ -1,6 +1,13 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/logo-white.svg">
+  <img alt="Mr. Themes logo" src="docs/images/logo-black.svg" width="96">
+</picture>
+
 # Mr. Themes
 
-Color themes for [Nimbalyst](https://nimbalyst.com). Use one everywhere or a different one per project, tweak any of them, or make your own.
+**Every project gets its own theme. Best buds with Mr. Projects.**
+
+Visually orient between projects, each with a chosen look. Built for multitasking, visual thinking, flaregremlins. For more goodness, enable [Mr. Projects](https://github.com/Firework-Labs/nimbalyst-mr-projects). An extension for [Nimbalyst](https://nimbalyst.com).
 
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="screenshots/com.fireworklabs.theme-editor-0-light.png">
@@ -9,13 +16,10 @@ Color themes for [Nimbalyst](https://nimbalyst.com). Use one everywhere or a dif
 
 - 36 themes in six families, light and dark, all checked for readable contrast
 - See and change which theme each project uses
-- Edit any theme with a live preview
+- Edit all 75 of the app's colors with a live preview (Nimbalyst's own themes can set 20)
 - Share themes as files, or have your agent design a family with the included Family Builder Kit
 
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="screenshots/com.fireworklabs.theme-editor-2-light.png">
-  <img alt="The theme editor: colors on the left, live preview and contrast check on the right" src="screenshots/com.fireworklabs.theme-editor-2-dark.png">
-</picture>
+<img alt="The theme editor reviewing a bright light theme while Nimbalyst wears a dark one" src="screenshots/com.fireworklabs.theme-editor-2-dark.png">
 
 ## Install
 

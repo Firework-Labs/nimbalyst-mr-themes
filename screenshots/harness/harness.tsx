@@ -12,6 +12,10 @@
  *             expands a family by clicking its header via browser_evaluate).
  *   ?shot=2   The .nimtheme Theme Editor, open on a sample theme.
  *   ?theme=dark|light   Which global preset is applied (default dark).
+ *   ?app=<preset id>    Shot 2 only: the preset the replica window wears
+ *                       (default grove-dark-juicy).
+ *   ?edit=<preset id>   Shot 2 only: the preset opened in the editor
+ *                       (default ember-light-juicy).
  */
 import { createRoot } from 'react-dom/client';
 import { createElement } from 'react';
@@ -21,9 +25,35 @@ import { parseThemeFile, resolveTheme, serializeThemeFile, type ThemeFile } from
 import harborFogSample from '../../design/samples/harbor-fog.nimtheme';
 import { createFakeEditorHost, createFakeExtensionContext, createFakePanelHost, DEMO_WORKSPACE_PATH } from './fakeHost';
 import { installFakeProjectBridge } from './demoData';
+import { getFamilies, setCollection } from '../../src/store';
 
 const DARK_THEME_ID = 'plum-dark-juicy';
 const LIGHT_THEME_ID = 'lagoon-light-pigment';
+const SHOT2_APP_THEME_ID = 'grove-dark-juicy';
+const SHOT2_EDIT_THEME_ID = 'ember-light-juicy';
+
+/**
+ * The collection in an interleaved order (hue and light/dark change from one
+ * card to the next) instead of the built-in family-by-family order, so the
+ * first visible rows show variety. Stored the way the real extension stores
+ * it: through setCollection(), which also sets collectionSeeded = 1.
+ */
+async function seedVariedCollection(): Promise<void> {
+  const families = ['rosewater', 'harbor', 'lagoon', 'ember', 'grove', 'plum'];
+  const variationShift = [0, 0, 1, 2, 0, 1];
+  const variations = ['juicy', 'pigment', 'subtle'];
+  const factions = ['dark', 'light'];
+  const ordered: ThemeFile[] = [];
+  for (let row = 0; row < 6; row++) {
+    families.forEach((family, f) => {
+      const faction = factions[(row + f + 1) % 2];
+      const variation = variations[(Math.floor(row / 2) + variationShift[f]) % 3];
+      ordered.push(findPreset(`${family}-${faction}-${variation}`));
+    });
+  }
+  if (new Set(ordered.map((t) => t.id)).size !== PRESETS.length) throw new Error('harness: collection order is not a permutation');
+  await setCollection(ordered, getFamilies());
+}
 
 function findPreset(id: string): ThemeFile {
   const t = PRESETS.find((p) => p.id === id);
@@ -35,9 +65,12 @@ async function main(): Promise<void> {
   const params = new URLSearchParams(window.location.search);
   const shot = params.get('shot') ?? '0';
   const variant = params.get('theme') === 'light' ? 'light' : 'dark';
-  const globalThemeId = variant === 'light' ? LIGHT_THEME_ID : DARK_THEME_ID;
+  // Shot 2 puts the app in one theme and opens a different one in the editor.
+  const globalThemeId =
+    shot === '2' ? params.get('app') ?? SHOT2_APP_THEME_ID : variant === 'light' ? LIGHT_THEME_ID : DARK_THEME_ID;
   const globalTheme = findPreset(globalThemeId);
-  const dataThemeId = variant === 'light' ? 'crystal-light' : 'crystal-dark';
+  const isDarkApp = globalTheme.faction === 'dark';
+  const dataThemeId = isDarkApp ? 'crystal-dark' : 'crystal-light';
 
   // Paint the "native" baseline the same as the theme we are about to enable,
   // so there is no flash of an unrelated theme before activate() + apply()
@@ -47,12 +80,13 @@ async function main(): Promise<void> {
   const nativeVars = resolveTheme(globalTheme).vars;
   for (const [name, value] of Object.entries(nativeVars)) html.style.setProperty(name, value);
   html.setAttribute('data-theme', dataThemeId);
-  html.classList.toggle('dark-theme', variant === 'dark');
-  html.classList.toggle('light-theme', variant === 'light');
+  html.classList.toggle('dark-theme', isDarkApp);
+  html.classList.toggle('light-theme', !isDarkApp);
 
   const context = createFakeExtensionContext();
   activate(context);
-  installFakeProjectBridge();
+  installFakeProjectBridge(variant);
+  await seedVariedCollection();
 
   const bridge = (window as unknown as { __nimbalystThemeEditor?: { apply(id: string): Promise<void> } }).__nimbalystThemeEditor;
   await bridge?.apply(globalThemeId);
@@ -77,7 +111,8 @@ async function main(): Promise<void> {
     // already long, and "<subtitle> · <fileName>" wraps badly in a 1024px viewport
     // if the file name is long too.
     const fileName = 'theme.nimtheme';
-    const content = variant === 'dark' ? JSON.stringify(harborFogSample, null, 2) : serializeThemeFile(findPreset('harbor-light-pigment'));
+    const editId = params.get('edit') ?? SHOT2_EDIT_THEME_ID;
+    const content = editId === 'harbor-fog-sample' ? JSON.stringify(harborFogSample, null, 2) : serializeThemeFile(findPreset(editId));
     // Round-trip through the real parser so the editor gets a fully normalized ThemeFile either way.
     void parseThemeFile(content);
     const host = createFakeEditorHost({

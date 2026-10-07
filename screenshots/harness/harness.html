@@ -168,6 +168,7 @@
       </div>
     </div>
   </div>
-  <script src="dist/harness.js"></script>
+  <!-- Cache-busted so a rebuilt bundle is never served stale by the preview browser. -->
+  <script>document.write('<script src="dist/harness.js?v=' + Date.now() + '"><\/script>');</script>
 </body>
 </html>
