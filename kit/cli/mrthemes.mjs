@@ -8,7 +8,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
@@ -19,7 +19,7 @@ if (!fs.existsSync(libPath)) {
   process.exit(1);
 }
 
-const MrThemes = await import(libPath);
+const MrThemes = await import(pathToFileURL(libPath).href);
 const {
   COLOR_HUES, NEUTRAL_HUES, HUES, generateFamilyThemes, normalizeFamily, serializeFamilyFile,
   parseImport, serializeThemeFile, fixContrast, fullAudit, familyAudit, summarize,
